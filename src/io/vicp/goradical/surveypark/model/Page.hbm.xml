@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="io.vicp.goradical.surveypark.model">
+	<class name="Page" table="t_pages">
+		<id name="id" column="id" type="integer">
+			<generator class="native"></generator>
+		</id>
+		<property name="title" column="title" type="string" length="200"></property>
+		<property name="description" column="description" type="string" length="200"></property>
+
+		<!-- 映射从 Page 到 Survey 之间多对一关联 -->
+		<many-to-one name="survey" class="Survey" column="survey_id" foreign-key="fk_survey_id"></many-to-one>
+
+		<!-- 映射从 Page 到 Question 一对多关联关系 -->
+		<set name="questions" inverse="true" order-by="id">
+			<key column="page_id"></key>
+			<one-to-many class="Question"></one-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

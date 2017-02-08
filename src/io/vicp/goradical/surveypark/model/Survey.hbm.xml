@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="io.vicp.goradical.surveypark.model">
+	<class name="Survey" table="t_surveys">
+		<id name="id" column="id" type="integer">
+			<generator class="native"></generator>
+		</id>
+		<property name="title" column="title" type="string" length="200"></property>
+		<property name="preText" column="pre_text" type="string" length="50"></property>
+		<property name="nextText" column="next_text" type="string" length="50"></property>
+		<property name="exitText" column="exit_text" type="string" length="50"></property>
+		<property name="doneText" column="done_text" type="string" length="50"></property>
+		<property name="createTime" column="create_time" type="timestamp" length="50"></property>
+		<property name="closed" column="closed" type="boolean" update="false"></property>
+		<!-- 映射从 Survey 到 User 之间多对一关联-->
+		<many-to-one name="user" class="User" column="user_id" foreign-key="fk_user_id"></many-to-one>
+		<!-- 映射从Survey到Page之间一对多关联关系 -->
+		<set name="pages" inverse="true" order-by="id">
+			<key column="survey_id" />
+			<one-to-many class="Page"/>
+		</set>
+	</class>
+</hibernate-mapping>
