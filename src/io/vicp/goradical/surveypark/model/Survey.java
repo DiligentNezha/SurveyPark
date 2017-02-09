@@ -17,6 +17,8 @@ public class Survey {
 	private Date createTime = new Date();
 	//是否关闭
 	private boolean closed;
+	//logo路径
+	private String logoPhotoPath;
 
 	//建立从 Survey 到 User 之间多对一关联关系
 	private User user;
@@ -102,6 +104,14 @@ public class Survey {
 
 	public void setClosed(boolean closed) {
 		this.closed = closed;
+	}
+
+	public String getLogoPhotoPath() {
+		return logoPhotoPath;
+	}
+
+	public void setLogoPhotoPath(String logoPhotoPath) {
+		this.logoPhotoPath = logoPhotoPath;
 	}
 
 	@Override

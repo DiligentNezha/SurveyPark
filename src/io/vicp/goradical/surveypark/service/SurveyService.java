@@ -100,4 +100,11 @@ public interface SurveyService {
 	 * @param sid
 	 */
 	void toggleStatus(Integer sid);
+
+	/**
+	 * 更新logo的路径
+	 * @param sid
+	 * @param s
+	 */
+	void updateLogoPhotoPath(Integer sid, String path);
 }
