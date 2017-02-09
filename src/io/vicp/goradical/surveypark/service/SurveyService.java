@@ -107,4 +107,11 @@ public interface SurveyService {
 	 * @param s
 	 */
 	void updateLogoPhotoPath(Integer sid, String path);
+
+	/**
+	 * 查询调查集合，携带pages
+	 * @param user
+	 * @return
+	 */
+	List<Survey> getSurveyWithPages(User user);
 }

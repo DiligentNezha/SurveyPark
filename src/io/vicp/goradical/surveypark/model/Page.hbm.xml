@@ -10,6 +10,11 @@
 		<property name="title" column="title" type="string" length="200"></property>
 		<property name="description" column="description" type="string" length="200"></property>
 
+		<property name="orderno" type="float">
+			<!-- 显式指定字段类型 -->
+			<column name="order_no" sql-type="decimal(10, 5)"></column>
+		</property>
+
 		<!-- 映射从 Page 到 Survey 之间多对一关联 -->
 		<many-to-one name="survey" class="Survey" column="survey_id" foreign-key="fk_survey_id"></many-to-one>
 

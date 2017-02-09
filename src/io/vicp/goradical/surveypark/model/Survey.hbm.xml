@@ -18,7 +18,7 @@
 		<!-- 映射从 Survey 到 User 之间多对一关联-->
 		<many-to-one name="user" class="User" column="user_id" foreign-key="fk_user_id"></many-to-one>
 		<!-- 映射从Survey到Page之间一对多关联关系 -->
-		<set name="pages" inverse="true" order-by="id">
+		<set name="pages" inverse="true" order-by="order_no">
 			<key column="survey_id" />
 			<one-to-many class="Page"/>
 		</set>

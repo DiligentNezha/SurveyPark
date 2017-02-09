@@ -17,7 +17,7 @@
 			    <interceptor-ref name="loginInterceptor"></interceptor-ref>
 			    <interceptor-ref name="defaultStack">
 				    <param name="modelDriven.refreshModelBeforeResult">true</param>
-				    <param name="fileUpload.maximumSize">1024 * 1000</param>
+				    <param name="fileUpload.maximumSize">10240</param>
 				    <param name="fileUpload.allowedExtensions">.jpg,.jpeg,.png,.bmp,.gif</param>
 				    <param name="fileUpload.allowedTypes">image/jpg,image/jpeg,image/png,image/gif,image/bmp</param>
 			    </interceptor-ref>
@@ -84,6 +84,11 @@
 		    <result name="6">/matrixNormalQuestionDesign.jsp</result>
 		    <result name="7">/matrixNormalQuestionDesign.jsp</result>
 		    <result name="8">/matrixSelectQuestionDesign.jsp</result>
+	    </action>
+
+	    <!-- MoveOrCopyPageAction-->
+	    <action name="MoveOrCopyPageAction_*" class="moveOrCopyPageAction" method="{1}">
+			<result name="moveOrCopyPageListPage">/moveOrCopyPageList.jsp</result>
 	    </action>
     </package>
 </struts>

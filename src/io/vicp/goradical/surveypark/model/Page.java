@@ -11,6 +11,9 @@ public class Page {
 	private String title = "未命名";
 	private String description;
 
+	//页序
+	private float orderno;
+
 	//建立从 Page 到 Survey 之间多对一的关联关系
 	private Survey survey;
 	//建立从 Page 到 Question 之间一对多的关联关系
@@ -22,6 +25,9 @@ public class Page {
 
 	public void setId(Integer id) {
 		this.id = id;
+		if (id != null) {
+			this.orderno = id;
+		}
 	}
 
 	public String getTitle() {
@@ -54,6 +60,14 @@ public class Page {
 
 	public void setQuestions(Set<Question> questions) {
 		this.questions = questions;
+	}
+
+	public float getOrderno() {
+		return orderno;
+	}
+
+	public void setOrderno(float orderno) {
+		this.orderno = orderno;
 	}
 
 	@Override

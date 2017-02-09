@@ -221,4 +221,20 @@ public class SurveyServiceImpl implements SurveyService {
 		String hql = "update Survey s set s.logoPhotoPath = ? where s.id = ?";
 		surveyDao.batchEntityByHQL(hql, path, sid);
 	}
+
+	/**
+	 * 查询调查集合，携带pages
+	 *
+	 * @param user
+	 * @return
+	 */
+	@Override
+	public List<Survey> getSurveyWithPages(User user) {
+		String hql = "from Survey s where s.user.id = ?";
+		List<Survey> list = surveyDao.findEntityByHQL(hql, user.getId());
+		for (Survey survey : list) {
+			survey.getPages().size();
+		}
+		return list;
+	}
 }
