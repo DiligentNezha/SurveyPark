@@ -122,4 +122,17 @@ public interface SurveyService {
 	 * @param pos
 	 */
 	void moveOrCopyePage(Integer srcPid, Integer targPid, int pos);
+
+	/**
+	 * 查询所有可用调查
+	 * @return
+	 */
+	List<Survey> findAllAvaliableSurveys();
+
+	/**
+	 * 查询调查的首页
+	 * @param sid
+	 * @return
+	 */
+	Page getFirstPage(Integer sid);
 }

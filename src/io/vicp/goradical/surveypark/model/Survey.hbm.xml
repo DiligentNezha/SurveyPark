@@ -15,6 +15,8 @@
 		<property name="createTime" column="create_time" type="timestamp" length="50"></property>
 		<property name="closed" column="closed" type="boolean" update="false"></property>
 		<property name="logoPhotoPath" column="logo_photo_path" type="string" length="200" update="false"></property>
+		<property name="minOrderno" formula="(select min(p.order_no) from t_pages p where p.survey_id = id)"></property>
+		<property name="maxOrderno" formula="(select max(p.order_no) from t_pages p where p.survey_id = id)"></property>
 		<!-- 映射从 Survey 到 User 之间多对一关联-->
 		<many-to-one name="user" class="User" column="user_id" foreign-key="fk_user_id"></many-to-one>
 		<!-- 映射从Survey到Page之间一对多关联关系 -->

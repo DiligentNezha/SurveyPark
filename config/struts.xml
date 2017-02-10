@@ -6,7 +6,9 @@
 <struts>
 	<constant name="struts.ui.theme" value="simple"></constant>
 	<constant name="struts.devMode" value="true"></constant>
-	<constant name="struts.enable.DynamicMethodInvocation" value="false"></constant>
+	<!-- 允许静态方法访问 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
 
     <package name="default" namespace="/" extends="struts-default">
 	    <!-- 注册登陆拦截器 -->
@@ -89,6 +91,12 @@
 	    <!-- MoveOrCopyPageAction-->
 	    <action name="MoveOrCopyPageAction_*" class="moveOrCopyPageAction" method="{1}">
 			<result name="moveOrCopyPageListPage">/moveOrCopyPageList.jsp</result>
+	    </action>
+
+	    <!-- EngageSurveyAction-->
+	    <action name="EngageSurveyAction_*" class="engageSurveyAction" method="{1}">
+			<result name="engageSurveyListPage">/engageSurveyList.jsp</result>
+			<result name="engageSurveyPage">/engageSurvey.jsp</result>
 	    </action>
     </package>
 </struts>

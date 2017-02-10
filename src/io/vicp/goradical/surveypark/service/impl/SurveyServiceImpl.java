@@ -272,6 +272,33 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 
 	/**
+	 * 查询所有可用调查
+	 *
+	 * @return
+	 */
+	@Override
+	public List<Survey> findAllAvaliableSurveys() {
+		String hql = "from Survey s where s.closed = ?";
+		return surveyDao.findEntityByHQL(hql, false);
+	}
+
+	/**
+	 * 查询调查的首页
+	 *
+	 * @param sid
+	 * @return
+	 */
+	@Override
+	public Page getFirstPage(Integer sid) {
+		String hql = "from Page p where p.survey.id = ? order by p.orderno asc";
+		List<Page> list = pageDao.findEntityByHQL(hql, sid);
+		Page page = list.get(0);
+		page.getQuestions().size();
+		page.getSurvey().getTitle();
+		return page;
+	}
+
+	/**
 	 * 设置页序
 	 * @param srcPage
 	 * @param targPage
