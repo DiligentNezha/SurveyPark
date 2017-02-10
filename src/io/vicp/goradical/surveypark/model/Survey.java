@@ -1,5 +1,6 @@
 package io.vicp.goradical.surveypark.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -7,7 +8,7 @@ import java.util.Set;
 /**
  * 调查类
  */
-public class Survey {
+public class Survey implements Serializable {
 	private Integer id;
 	private String title = "未命名";
 	private String preText = "上一步";

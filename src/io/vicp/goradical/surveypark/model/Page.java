@@ -1,12 +1,13 @@
 package io.vicp.goradical.surveypark.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * 页面类
  */
-public class Page {
+public class Page implements Serializable{
 	private Integer id;
 	private String title = "未命名";
 	private String description;
@@ -15,7 +16,7 @@ public class Page {
 	private float orderno;
 
 	//建立从 Page 到 Survey 之间多对一的关联关系
-	private Survey survey;
+	private transient Survey survey;
 	//建立从 Page 到 Question 之间一对多的关联关系
 	private Set<Question> questions = new HashSet<>();
 

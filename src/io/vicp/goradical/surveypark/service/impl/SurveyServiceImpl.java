@@ -3,6 +3,7 @@ package io.vicp.goradical.surveypark.service.impl;
 import io.vicp.goradical.surveypark.dao.BaseDao;
 import io.vicp.goradical.surveypark.model.*;
 import io.vicp.goradical.surveypark.service.SurveyService;
+import io.vicp.goradical.surveypark.util.DataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -255,9 +256,18 @@ public class SurveyServiceImpl implements SurveyService {
 		if (srcSurvey.getId().equals(targSurvey.getId())) {
 			setOrderno(srcPage, targPage, pos);
 		} else {
+			//强行初始化问题集合，否则深度复制的页面对象没有问题集合
+			srcPage.getQuestions().size();
 			//深度复制
-//			Page copyPage = deeplyCopy(srcPage);
-//			setOrderno(copyPage, targPage, pos);
+			Page copyPage = (Page) DataUtil.deeplyCopy(srcPage);
+			//设置页面和目标页面关联
+			copyPage.setSurvey(targSurvey);
+			//保存页面
+			pageDao.saveEntity(copyPage);
+			for (Question question : copyPage.getQuestions()) {
+				questionDao.saveEntity(question);
+			}
+			setOrderno(copyPage, targPage, pos);
 		}
 	}
 

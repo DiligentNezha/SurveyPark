@@ -2,12 +2,13 @@ package io.vicp.goradical.surveypark.model;
 
 import io.vicp.goradical.surveypark.util.StringUtil;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
  * 问题类
  */
-public class Question {
+public class Question implements Serializable{
 	private static final String RN = "\r\n";
 
 	private Integer id;

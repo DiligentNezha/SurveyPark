@@ -1,5 +1,6 @@
 package io.vicp.goradical.surveypark.util;
 
+import java.io.*;
 import java.security.MessageDigest;
 
 /**
@@ -26,6 +27,32 @@ public class DataUtil {
 				sb.append(chars[b & 0x0F]);
 			}
 			return sb.toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * 深度复制，复制的整个对象图
+	 * @param src
+	 * @return
+	 */
+	public static Serializable deeplyCopy(Serializable src) {
+		try {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(baos);
+			oos.writeObject(src);
+			oos.close();
+			baos.close();
+
+			byte[] bytes = baos.toByteArray();
+			ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+			ObjectInputStream ois = new ObjectInputStream(bais);
+			Serializable copy = (Serializable) ois.readObject();
+			ois.close();
+			bais.close();
+			return copy;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
