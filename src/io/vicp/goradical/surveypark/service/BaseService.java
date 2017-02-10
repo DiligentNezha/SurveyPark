@@ -13,4 +13,6 @@ public interface BaseService<T> {
 	T loadEntity(Integer id);
 	T getEntity(Integer id);
 	List<T> findEntityByHQL(String hql, Object... objects);
+	//单值检索，确保查询结果有且只有一条记录
+	Object uniqueResult(String hql, Object... objects);
 }

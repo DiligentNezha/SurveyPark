@@ -71,4 +71,13 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		}
 		return query.list();
 	}
+
+	@Override
+	public Object uniqueResult(String hql, Object... objects) {
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		for (int i = 0; i < objects.length; i++) {
+			query.setParameter(i, objects[i]);
+		}
+		return query.uniqueResult();
+	}
 }

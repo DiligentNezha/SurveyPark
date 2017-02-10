@@ -55,4 +55,9 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 	public List<T> findEntityByHQL(String hql, Object... objects) {
 		return dao.findEntityByHQL(hql, objects);
 	}
+
+	@Override
+	public Object uniqueResult(String hql, Object... objects) {
+		return dao.uniqueResult(hql, objects);
+	}
 }

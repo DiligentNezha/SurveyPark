@@ -20,8 +20,38 @@ public class MoveOrCopyPageAction extends BaseAction<Page> implements UserAware{
 
 	@Autowired
 	private SurveyService surveyService;
-
+	//原页面id
 	private Integer srcPid;
+	//目标页面id
+	private Integer targPid;
+	//位置
+	private int pos;
+	//目标调查id
+	private Integer sid;
+
+	public Integer getTargPid() {
+		return targPid;
+	}
+
+	public void setTargPid(Integer targPid) {
+		this.targPid = targPid;
+	}
+
+	public int getPos() {
+		return pos;
+	}
+
+	public void setPos(int pos) {
+		this.pos = pos;
+	}
+
+	public Integer getSid() {
+		return sid;
+	}
+
+	public void setSid(Integer sid) {
+		this.sid = sid;
+	}
 
 	private List<Survey> mySurveys;
 	private User user;
@@ -49,6 +79,15 @@ public class MoveOrCopyPageAction extends BaseAction<Page> implements UserAware{
 	public String toSelectTargetPage() {
 		mySurveys = surveyService.getSurveyWithPages(user);
 		return "moveOrCopyPageListPage";
+	}
+
+	/**
+	 * 进行页面移动/复制
+	 * @return
+	 */
+	public String doMoveOrCopyPage() {
+		surveyService.moveOrCopyePage(srcPid, targPid, pos);
+		return "designSurveyAction";
 	}
 
 	//注入用户

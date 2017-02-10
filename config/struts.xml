@@ -17,7 +17,7 @@
 			    <interceptor-ref name="loginInterceptor"></interceptor-ref>
 			    <interceptor-ref name="defaultStack">
 				    <param name="modelDriven.refreshModelBeforeResult">true</param>
-				    <param name="fileUpload.maximumSize">10240</param>
+				    <param name="fileUpload.maximumSize">1024000</param>
 				    <param name="fileUpload.allowedExtensions">.jpg,.jpeg,.png,.bmp,.gif</param>
 				    <param name="fileUpload.allowedTypes">image/jpg,image/jpeg,image/png,image/gif,image/bmp</param>
 			    </interceptor-ref>
