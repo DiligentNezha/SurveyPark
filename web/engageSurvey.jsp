@@ -8,7 +8,6 @@
 	</head>
 	<body>
 		<s:include value="/header.jsp" />
-		<s:debug></s:debug>
 		<s:form action="EngageSurveyAction_doEngageSurvey" method="post" >
 			<s:hidden name="currPid" value="%{currPage.id}" />
 			<table>

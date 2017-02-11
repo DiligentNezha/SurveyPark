@@ -1,9 +1,6 @@
 package io.vicp.goradical.surveypark.service;
 
-import io.vicp.goradical.surveypark.model.Page;
-import io.vicp.goradical.surveypark.model.Question;
-import io.vicp.goradical.surveypark.model.Survey;
-import io.vicp.goradical.surveypark.model.User;
+import io.vicp.goradical.surveypark.model.*;
 
 import java.util.List;
 
@@ -149,4 +146,10 @@ public interface SurveyService {
 	 * @return
 	 */
 	Page getNextPage(Integer currPid);
+
+	/**
+	 * 批量保存答案
+	 * @param answers
+	 */
+	void saveAnswers(List<Answer> answers);
 }

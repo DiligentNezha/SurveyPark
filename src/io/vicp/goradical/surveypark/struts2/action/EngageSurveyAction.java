@@ -1,5 +1,6 @@
 package io.vicp.goradical.surveypark.struts2.action;
 
+import io.vicp.goradical.surveypark.model.Answer;
 import io.vicp.goradical.surveypark.model.Page;
 import io.vicp.goradical.surveypark.model.Survey;
 import io.vicp.goradical.surveypark.service.SurveyService;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 
 import javax.servlet.ServletContext;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -147,6 +149,7 @@ public class EngageSurveyAction extends BaseAction<Survey> implements ServletCon
 			//完成
 			mergeParamsIntoSession();
 			//答案入库
+			surveyService.saveAnswers(processAnswers());
 			clearSessionData();
 			return "engageSurveyAction";
 		} else if (submitName.endsWith("exit")) {
@@ -155,6 +158,97 @@ public class EngageSurveyAction extends BaseAction<Survey> implements ServletCon
 			return "engageSurveyAction";
 		}
 		return null;
+	}
+
+	/**
+	 * 处理答案
+	 */
+	private List<Answer> processAnswers() {
+		//矩阵式单选按钮的map
+		Map<Integer, String> matrixRadioMap = new HashMap<>();
+		//所有答案的集合
+		List<Answer> answers = new ArrayList<>();
+		Answer a;
+		String key;
+		String[] value;
+		Map<Integer, Map<String, String[]>> allMap = getAllParamsMap();
+		for (Map<String, String[]> map : allMap.values()) {
+			for (Map.Entry<String, String[]> entry : map.entrySet()) {
+				key = entry.getKey();
+				value = entry.getValue();
+				//处理q开头的参数
+				if (key.startsWith("q")) {
+					if (!key.contains("other") && !key.contains("_")) {
+						//常规参数
+						a = new Answer();
+						a.setAnswerIds(StringUtil.arr2Str(value));//answerIds
+						a.setQuestionId(getQid(key));//qid
+						a.setSurveyId(getCurrentSurvey().getId());
+						a.setOtherAnswer(StringUtil.arr2Str(map.get(key + "other")));
+						answers.add(a);
+					} else if (key.contains("_")) {
+						//矩阵式单选按钮
+						Integer radioQid = getMatrixRadioQid(key);
+						String oldValue = matrixRadioMap.get(radioQid);
+						if (oldValue == null) {
+							matrixRadioMap.put(radioQid, StringUtil.arr2Str(value));
+
+						} else {
+							matrixRadioMap.put(radioQid, oldValue + "," + StringUtil.arr2Str(value));
+						}
+					}
+				}
+			}
+		}
+		//单独处理矩阵式单选按钮
+		processMatrixRadioMap(matrixRadioMap, answers);
+		return answers;
+	}
+
+	/**
+	 * 单独处理矩阵式单选按钮
+	 * @param matrixRadioMap
+	 * @param answers
+	 */
+	private void processMatrixRadioMap(Map<Integer, String> matrixRadioMap, List<Answer> answers) {
+		Answer a;
+		Integer key;
+		String value;
+		for (Map.Entry<Integer, String> entry : matrixRadioMap.entrySet()) {
+			key = entry.getKey();
+			value = entry.getValue();
+			a = new Answer();
+			a.setAnswerIds(value);
+			a.setQuestionId(key);
+			a.setSurveyId(getCurrentSurvey().getId());
+			answers.add(a);
+		}
+	}
+
+	/**
+	 * 获取矩阵式问题id,q12_0 ---> 12
+	 * @param key
+	 * @return
+	 */
+	private Integer getMatrixRadioQid(String key) {
+		return Integer.parseInt(key.substring(1, key.lastIndexOf("_")));
+	}
+
+	/**
+	 * 获取当前调查对象
+	 * @return
+	 */
+	private Survey getCurrentSurvey() {
+		return (Survey) sessionMap.get(CURRENT_SURVEY);
+	}
+
+	/**
+	 * 提取问题id q1 ---> 1
+	 * @param key
+	 * @return
+	 */
+	private Integer getQid(String key) {
+		return Integer.parseInt(key.substring(1));
 	}
 
 	/**

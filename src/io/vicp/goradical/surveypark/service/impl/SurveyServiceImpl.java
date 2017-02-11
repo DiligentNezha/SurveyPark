@@ -7,7 +7,9 @@ import io.vicp.goradical.surveypark.util.DataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * SurveyService实现
@@ -324,6 +326,22 @@ public class SurveyServiceImpl implements SurveyService {
 		page = getNextPage(page);
 		page.getQuestions().size();
 		return page;
+	}
+
+	/**
+	 * 批量保存答案
+	 *
+	 * @param answers
+	 */
+	@Override
+	public void saveAnswers(List<Answer> answers) {
+		Date date = new Date();
+		String uuid = UUID.randomUUID().toString();
+		for (Answer answer : answers) {
+			answer.setUuid(uuid);
+			answer.setAnswerTime(date);
+			answerDao.saveEntity(answer);
+		}
 	}
 
 	/**

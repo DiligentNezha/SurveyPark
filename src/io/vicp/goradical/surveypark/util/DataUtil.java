@@ -7,9 +7,6 @@ import java.security.MessageDigest;
  * 数据工具类
  */
 public class DataUtil {
-	public static void main(String[] args) {
-		System.out.println(md5("root"));
-	}
 	/**
 	 * 使用MD5算法进行加密
 	 * @param src

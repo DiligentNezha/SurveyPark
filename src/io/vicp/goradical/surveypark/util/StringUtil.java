@@ -33,4 +33,20 @@ public class StringUtil {
 		}
 		return false;
 	}
+
+	/**
+	 * 将数组变换成字符串，使用，分割
+	 * @param arr
+	 * @return
+	 */
+	public static String arr2Str(String[] arr) {
+		String temp = "";
+		if (ValidateUtil.isValid(arr)) {
+			for (String s : arr) {
+				temp = temp + s + ",";
+			}
+			return temp.substring(0, temp.length() - 1);
+		}
+		return temp;
+	}
 }
