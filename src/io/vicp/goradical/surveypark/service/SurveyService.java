@@ -135,4 +135,18 @@ public interface SurveyService {
 	 * @return
 	 */
 	Page getFirstPage(Integer sid);
+
+	/**
+	 * 获得上一页
+	 * @param currPid
+	 * @return
+	 */
+	Page getPrePage(Integer currPid);
+
+	/**
+	 * 获得下一页
+	 * @param currPid
+	 * @return
+	 */
+	Page getNextPage(Integer currPid);
 }

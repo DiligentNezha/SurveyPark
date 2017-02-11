@@ -70,15 +70,4 @@ public class Page implements Serializable{
 	public void setOrderno(float orderno) {
 		this.orderno = orderno;
 	}
-
-	@Override
-	public String toString() {
-		return "Page{" +
-				"id=" + id +
-				", title='" + title + '\'' +
-				", description='" + description + '\'' +
-				", survey=" + survey +
-				", questions=" + questions +
-				'}';
-	}
 }

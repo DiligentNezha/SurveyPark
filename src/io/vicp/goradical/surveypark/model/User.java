@@ -61,15 +61,4 @@ public class User {
 		this.regDate = regDate;
 	}
 
-	@Override
-	public String toString() {
-		return "User{" +
-				"id=" + id +
-				", email='" + email + '\'' +
-				", name='" + name + '\'' +
-				", password='" + password + '\'' +
-				", nickName='" + nickName + '\'' +
-				", regDate=" + regDate +
-				'}';
-	}
 }

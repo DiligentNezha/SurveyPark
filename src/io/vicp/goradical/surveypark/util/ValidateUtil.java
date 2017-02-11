@@ -29,4 +29,16 @@ public class ValidateUtil {
 		}
 		return true;
 	}
+
+	/**
+	 * 判断数组是否有效
+	 * @param arr
+	 * @return
+	 */
+	public static boolean isValid(Object[] arr) {
+		if (arr == null || arr.length == 0) {
+			return false;
+		}
+		return true;
+	}
 }

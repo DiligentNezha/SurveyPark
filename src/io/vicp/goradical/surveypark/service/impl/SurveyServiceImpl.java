@@ -299,6 +299,34 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 
 	/**
+	 * 获得上一页
+	 *
+	 * @param currPid
+	 * @return
+	 */
+	@Override
+	public Page getPrePage(Integer currPid) {
+		Page page = getPage(currPid);
+		page = getPrePage(page);
+		page.getQuestions().size();
+		return page;
+	}
+
+	/**
+	 * 获得下一页
+	 *
+	 * @param currPid
+	 * @return
+	 */
+	@Override
+	public Page getNextPage(Integer currPid) {
+		Page page = getPage(currPid);
+		page = getNextPage(page);
+		page.getQuestions().size();
+		return page;
+	}
+
+	/**
 	 * 设置页序
 	 * @param srcPage
 	 * @param targPage

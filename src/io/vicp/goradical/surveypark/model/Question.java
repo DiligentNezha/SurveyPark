@@ -3,7 +3,6 @@ package io.vicp.goradical.surveypark.model;
 import io.vicp.goradical.surveypark.util.StringUtil;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 /**
  * 问题类
@@ -175,25 +174,4 @@ public class Question implements Serializable{
 		this.matrixSelectOptionArr = matrixSelectOptionArr;
 	}
 
-	@Override
-	public String toString() {
-		return "Question{" +
-				"id=" + id +
-				", questionType=" + questionType +
-				", title='" + title + '\'' +
-				", options='" + options + '\'' +
-				", optionArr=" + Arrays.toString(optionArr) +
-				", other=" + other +
-				", otherStyle=" + otherStyle +
-				", otherSelectOptions='" + otherSelectOptions + '\'' +
-				", otherSelectOptionArr=" + Arrays.toString(otherSelectOptionArr) +
-				", matrixRowTitles='" + matrixRowTitles + '\'' +
-				", matrixRowTitleArr=" + Arrays.toString(matrixRowTitleArr) +
-				", matrixColTitles='" + matrixColTitles + '\'' +
-				", matrixColTitleArr=" + Arrays.toString(matrixColTitleArr) +
-				", matrixSelectOptions='" + matrixSelectOptions + '\'' +
-				", matrixSelectOptionArr=" + Arrays.toString(matrixSelectOptionArr) +
-				", page=" + page +
-				'}';
-	}
 }

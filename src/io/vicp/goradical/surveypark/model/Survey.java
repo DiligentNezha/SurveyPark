@@ -136,17 +136,4 @@ public class Survey implements Serializable {
 		this.maxOrderno = maxOrderno;
 	}
 
-	@Override
-	public String toString() {
-		return "Survey{" +
-				"id=" + id +
-				", title='" + title + '\'' +
-				", preText='" + preText + '\'' +
-				", nextText='" + nextText + '\'' +
-				", exitText='" + exitText + '\'' +
-				", doneText='" + doneText + '\'' +
-				", createTime=" + createTime +
-				", user=" + user +
-				'}';
-	}
 }
