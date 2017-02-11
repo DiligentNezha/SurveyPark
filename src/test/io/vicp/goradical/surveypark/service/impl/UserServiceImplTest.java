@@ -1,6 +1,7 @@
 package test.io.vicp.goradical.surveypark.service.impl;
 
 import io.vicp.goradical.surveypark.model.User;
+import io.vicp.goradical.surveypark.service.StatisticsService;
 import io.vicp.goradical.surveypark.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,11 +10,18 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class UserServiceImplTest {
 	private UserService userService;
+	private StatisticsService statisticsService;
 
 	@Before
 	public void setUp() throws Exception {
 		ApplicationContext act = new ClassPathXmlApplicationContext("applicationContext.xml");
 		userService = (UserService) act.getBean("userService");
+		statisticsService = (StatisticsService) act.getBean("statisticsService");
+	}
+
+	@Test
+	public void testStatistics() throws Exception {
+		statisticsService.statistics(16);
 	}
 
 	@Test
