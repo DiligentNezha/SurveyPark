@@ -20,6 +20,7 @@
             <file>file://$MODULE_DIR$/config/struts.xml</file>
             <file>jar://$MODULE_DIR$/web/WEB-INF/lib/struts2-core-2.3.24.1.jar!/struts-default.xml</file>
             <file>jar://$MODULE_DIR$/web/WEB-INF/lib/struts2-spring-plugin-2.3.24.1.jar!/struts-plugin.xml</file>
+            <file>jar://$MODULE_DIR$/web/WEB-INF/lib/struts2-jfreechart-plugin-2.3.24.1.jar!/struts-plugin.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>

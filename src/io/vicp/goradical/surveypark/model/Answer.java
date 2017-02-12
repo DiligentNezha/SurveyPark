@@ -11,7 +11,6 @@ public class Answer {
 	private String otherAnswer;
 	private String uuid;//批次
 	private Date answerTime;
-
 	private Integer questionId;//关联字段
 	private Integer surveyId;//关联字段
 

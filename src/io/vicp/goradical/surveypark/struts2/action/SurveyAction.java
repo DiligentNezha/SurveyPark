@@ -177,6 +177,15 @@ public class SurveyAction extends BaseAction<Survey> implements UserAware, Servl
 		return false;
 	}
 
+	/**
+	 * 分析调查
+	 * @return
+	 */
+	public String analyzeSurvey() {
+		model = surveyService.getSurveyWithChildren(sid);
+		return "analyzeSurveyListPage";
+	}
+
 	//动态错误页指定
 	private String inputPage;
 
