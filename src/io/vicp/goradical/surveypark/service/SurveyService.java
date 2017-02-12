@@ -152,4 +152,18 @@ public interface SurveyService {
 	 * @param answers
 	 */
 	void saveAnswers(List<Answer> answers);
+
+	/**
+	 * 查询指定调查的所有问题
+	 * @param sid
+	 * @return
+	 */
+	List<Question> getQuestions(Integer sid);
+
+	/**
+	 * 查询指定调查的所有答案
+	 * @param sid
+	 * @return
+	 */
+	List<Answer> getAnswers(Integer sid);
 }

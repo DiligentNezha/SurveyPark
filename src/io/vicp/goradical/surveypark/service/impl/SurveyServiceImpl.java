@@ -345,6 +345,30 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 
 	/**
+	 * 查询指定调查的所有问题
+	 *
+	 * @param sid
+	 * @return
+	 */
+	@Override
+	public List<Question> getQuestions(Integer sid) {
+		String hql = "from Question q where q.page.survey.id = ?";
+		return questionDao.findEntityByHQL(hql, sid);
+	}
+
+	/**
+	 * 查询指定调查的所有答案
+	 *
+	 * @param sid
+	 * @return
+	 */
+	@Override
+	public List<Answer> getAnswers(Integer sid) {
+		String hql = "from Answer a where a.surveyId = ? order by a.uuid asc";
+		return answerDao.findEntityByHQL(hql, sid);
+	}
+
+	/**
 	 * 设置页序
 	 * @param srcPage
 	 * @param targPage

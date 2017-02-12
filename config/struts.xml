@@ -118,5 +118,14 @@
 			<result name="7">/matrixNormalStatistics.jsp</result>
 		    <result name="8">/matrixSelectStatistics.jsp</result>
 	    </action>
+
+	    <!-- CollectionAction -->
+	    <action name="CollectionSurveyAction" class="collectionSurveyAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="inputName">is</param>
+				<param name="bufferSize">1024</param>
+			</result>
+	    </action>
     </package>
 </struts>
