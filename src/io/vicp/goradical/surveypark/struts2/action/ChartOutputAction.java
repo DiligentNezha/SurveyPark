@@ -11,10 +11,10 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.util.Rotation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.annotation.Resource;
 import java.awt.*;
 
 /**
@@ -24,6 +24,7 @@ import java.awt.*;
 @Scope("prototype")
 public class ChartOutputAction extends BaseAction<Page> {
 
+	private static final long serialVersionUID = -718914112568667922L;
 	/* 平面饼图 */
 	private static final int CHARTTYPE_PIE_2D = 0;
 	/* 立体饼图 */
@@ -46,8 +47,8 @@ public class ChartOutputAction extends BaseAction<Page> {
 	//图表类型
 	private int chartType ;
 
-	@Resource
-	private StatisticsService ss ;
+	@Autowired
+	private StatisticsService statisticsService;
 
 	public Integer getQid() {
 		return qid;
@@ -74,7 +75,7 @@ public class ChartOutputAction extends BaseAction<Page> {
 		JFreeChart chart = null ;
 		try {
 			Font font = new Font("宋体", 0, 20);// 字体
-			QuestionStatisticsModel qsm = ss.statistics(qid);
+			QuestionStatisticsModel qsm = statisticsService.statistics(qid);
 			DefaultPieDataset pieds = null;// 饼图的数据集
 			DefaultCategoryDataset cateds = null;// 种类数据集
 			//构造数据集

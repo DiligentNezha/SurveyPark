@@ -111,5 +111,12 @@
 				<param name="width">400</param>
 			</result>
 		</action>
+
+	    <!-- MatrixStatisticsAction -->
+	    <action name="MatrixStatisticsAction" class="matrixStatisticsAction">
+			<result name="6">/matrixNormalStatistics.jsp</result>
+			<result name="7">/matrixNormalStatistics.jsp</result>
+		    <result name="8">/matrixSelectStatistics.jsp</result>
+	    </action>
     </package>
 </struts>
