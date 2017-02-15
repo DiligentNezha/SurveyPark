@@ -31,6 +31,7 @@
 		<property name="mappingLocations">
 			<list>
 				<value>classpath:io/vicp/goradical/surveypark/model/*.hbm.xml</value>
+				<value>classpath:io/vicp/goradical/surveypark/model/security/*.hbm.xml</value>
 			</list>
 		</property>
 	</bean>

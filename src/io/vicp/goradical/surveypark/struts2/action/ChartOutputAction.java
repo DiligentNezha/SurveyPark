@@ -70,9 +70,10 @@ public class ChartOutputAction extends BaseAction<Page> {
 		return SUCCESS;
 	}
 
-	@SuppressWarnings("deprecation")
+	private JFreeChart chart;
+
 	public JFreeChart getChart() {
-		JFreeChart chart = null ;
+		chart = null ;
 		try {
 			Font font = new Font("宋体", 0, 20);// 字体
 			QuestionStatisticsModel qsm = statisticsService.statistics(qid);

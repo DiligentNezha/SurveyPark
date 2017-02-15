@@ -1,6 +1,10 @@
 package io.vicp.goradical.surveypark.model;
 
+import io.vicp.goradical.surveypark.model.security.Role;
+
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 用户类
@@ -12,6 +16,8 @@ public class User {
 	private String password;
 	private String nickName;
 	private Date regDate = new Date();
+	//角色集合
+	private Set<Role> roles = new HashSet<>();
 
 	public Integer getId() {
 		return id;
@@ -61,4 +67,11 @@ public class User {
 		this.regDate = regDate;
 	}
 
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
 }

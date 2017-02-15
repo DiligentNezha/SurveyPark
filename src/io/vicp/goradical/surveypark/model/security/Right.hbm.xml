@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="io.vicp.goradical.surveypark.model.security">
+	<class name="Right" table="t_right">
+		<id name="id" column="id" type="integer">
+			<generator class="identity" />
+		</id>
+		<property name="rightUrl" column="right_url" type="string" length="50" />
+		<property name="rightName" column="right_name" type="string" length="200" />
+		<property name="rightDesc" column="right_desc" type="string" length="200" />
+		<property name="rightPos" column="right_pos" type="integer" update="false"/>
+		<property name="rightCode" column="right_code" type="long" update="false" />
+	</class>
+</hibernate-mapping>

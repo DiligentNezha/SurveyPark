@@ -11,5 +11,9 @@
 		<property name="password" column="password" type="string" length="50"></property>
 		<property name="nickName" column="nick_name" type="string" length="50"></property>
 		<property name="regDate" column="reg_date" type="timestamp" update="false"></property>
+		<set name="roles" table="t_user_role">
+			<key column="user_id"></key>
+			<many-to-many class="io.vicp.goradical.surveypark.model.security.Role" column="role_id"></many-to-many>
+		</set>
 	</class>
 </hibernate-mapping>

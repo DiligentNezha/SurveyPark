@@ -51,7 +51,7 @@
 												<!-- 判断当前题型是否矩阵式题型 -->
 												<s:if test='#qt > 5 '>
 													<!-- 提交给另外一个action,改变form的提交地址 -->
-													<s:submit action="MatrixStatisticsAction" value="查看矩阵式问题统计结果" cssClass="btn"/>
+													<s:submit action="MatrixStatisticsAction!execute" value="查看矩阵式问题统计结果" cssClass="btn"/>
 												</s:if>
 												<s:elseif test='#qt lt 5'>
 													<s:set var="chartList" value="#{0:'平面饼图',
