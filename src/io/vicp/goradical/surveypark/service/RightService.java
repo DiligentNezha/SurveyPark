@@ -12,4 +12,10 @@ public interface RightService extends BaseService<Right>{
 	 * @param model
 	 */
 	void saveOrUpdateRight(Right model);
+
+	/**
+	 * 按照url追加权限
+	 * @param url
+	 */
+	void appendRightByURL(String url);
 }

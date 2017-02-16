@@ -12,7 +12,7 @@
 		<property name="roleValue" column="role_value" type="string" length="20" />
 		
 		<!-- 映射role到Right之间多对多关联关系 -->
-		<set name="allRights" table="t_role_right">
+		<set name="rights" table="t_role_right">
 			<key column="role_id" />
 			<many-to-many class="Right" column="right_id" />
 		</set>

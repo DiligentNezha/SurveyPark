@@ -61,4 +61,20 @@ public class RightServiceImpl extends BaseServiceImpl<Right> implements RightSer
 		}
 		saveOrUpdateEntity(right);
 	}
+
+	/**
+	 * 按照url追加权限
+	 *
+	 * @param url
+	 */
+	@Override
+	public void appendRightByURL(String url) {
+		String hql = "select count(*) from Right r where r.rightUrl = ?";
+		Long count = (Long) uniqueResult(hql, url);
+		if (count == 0) {
+			Right right = new Right();
+			right.setRightUrl(url);
+			saveOrUpdateRight(right);
+		}
+	}
 }

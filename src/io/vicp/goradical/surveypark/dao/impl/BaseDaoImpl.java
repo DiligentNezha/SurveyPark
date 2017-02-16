@@ -13,6 +13,7 @@ import java.util.List;
  * @param <T>
  */
 public class BaseDaoImpl<T> implements BaseDao<T> {
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
