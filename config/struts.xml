@@ -127,5 +127,16 @@
 				<param name="bufferSize">1024</param>
 			</result>
 	    </action>
+
+	    <!-- RightAction -->
+	    <action name="RightAction_*" class="rightAction" method="{1}">
+			<result name="rightListPage">/rightList.jsp</result>
+			<result name="addRightPage">/editRight.jsp</result>
+			<result name="editRightPage">/editRight.jsp</result>
+		    <result name="findAllRightAction" type="redirectAction">
+			    <param name="namespace">/</param>
+			    <param name="actionName">RightAction_findAllRights</param>
+		    </result>
+	    </action>
     </package>
 </struts>

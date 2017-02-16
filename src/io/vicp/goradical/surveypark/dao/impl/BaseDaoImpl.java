@@ -80,4 +80,12 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		}
 		return query.uniqueResult();
 	}
+
+	/**
+	 * 无实际作用，仅作为方便SQL语句书写
+	 * @return
+	 */
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
 }
