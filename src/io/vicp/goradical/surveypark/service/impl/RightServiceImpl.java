@@ -2,7 +2,10 @@ package io.vicp.goradical.surveypark.service.impl;
 
 import io.vicp.goradical.surveypark.model.security.Right;
 import io.vicp.goradical.surveypark.service.RightService;
+import io.vicp.goradical.surveypark.util.ValidateUtil;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service(value = "rightService")
 public class RightServiceImpl extends BaseServiceImpl<Right> implements RightService {
@@ -76,5 +79,21 @@ public class RightServiceImpl extends BaseServiceImpl<Right> implements RightSer
 			right.setRightUrl(url);
 			saveOrUpdateRight(right);
 		}
+	}
+
+	/**
+	 * 鼻梁更新权限
+	 *
+	 * @param allRights
+	 */
+	@Override
+	public void batchUpdateRights(List<Right> allRights) {
+		String hql = "update Right r set r.rightName = ? where r.id = ?";
+		if (ValidateUtil.isValid(allRights)) {
+			for (Right r : allRights) {
+				batchEntityByHQL(hql, r.getRightName(), r.getId());
+			}
+		}
+
 	}
 }

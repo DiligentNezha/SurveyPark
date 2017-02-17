@@ -66,6 +66,15 @@ public class RightAction extends BaseAction<Right> {
 		return "findAllRightAction";
 	}
 
+	/**
+	 * 批量更新权限
+	 * @return
+	 */
+	public String batchUpdateRights() {
+		rightService.batchUpdateRights(allRights);
+		return "findAllRightAction";
+	}
+
 	public List<Right> getAllRights() {
 		return allRights;
 	}
