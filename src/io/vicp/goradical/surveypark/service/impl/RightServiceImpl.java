@@ -2,10 +2,12 @@ package io.vicp.goradical.surveypark.service.impl;
 
 import io.vicp.goradical.surveypark.model.security.Right;
 import io.vicp.goradical.surveypark.service.RightService;
+import io.vicp.goradical.surveypark.util.StringUtil;
 import io.vicp.goradical.surveypark.util.ValidateUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service(value = "rightService")
 public class RightServiceImpl extends BaseServiceImpl<Right> implements RightService {
@@ -95,5 +97,49 @@ public class RightServiceImpl extends BaseServiceImpl<Right> implements RightSer
 			}
 		}
 
+	}
+
+	/**
+	 * 查询在指定范围内的权限
+	 */
+	public List<Right> findRightsInRange(Integer[] ids){
+		if(ValidateUtil.isValid(ids)){
+			String hql = "from Right r where r.id in ("+ StringUtil.arr2Str(ids)+")" ;
+			return this.findEntityByHQL(hql);
+		}
+		return null ;
+	}
+
+	/**
+	 * 查询不在指定范围内的权限
+	 */
+	public List<Right> findRightsNotInRange(Set<Right> rights){
+		if(!ValidateUtil.isValid(rights)){
+			return this.findAllEntities();
+		}
+		else{
+			String hql = "from Right r where r.id not in("+ extractRightIds(rights)+")" ;
+			return this.findEntityByHQL(hql);
+		}
+	}
+
+	private String extractRightIds(Set<Right> rights) {
+		String temp = "" ;
+		if(ValidateUtil.isValid(rights)){
+			for(Right e: rights){
+				temp = temp + e.getId() + "," ;
+			}
+			return temp.substring(0,temp.length() - 1);
+		}
+		return temp ;
+	}
+
+	/**
+	 * 查询最大权限位
+	 */
+	public int getMaxRightPos(){
+		String hql = "select max(r.rightPos) from Right r" ;
+		Integer pos = (Integer) this.uniqueResult(hql);
+		return pos == null ? 0 : pos ;
 	}
 }

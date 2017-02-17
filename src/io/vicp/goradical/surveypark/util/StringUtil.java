@@ -39,10 +39,10 @@ public class StringUtil {
 	 * @param arr
 	 * @return
 	 */
-	public static String arr2Str(String[] arr) {
+	public static String arr2Str(Object[] arr) {
 		String temp = "";
 		if (ValidateUtil.isValid(arr)) {
-			for (String s : arr) {
+			for (Object s : arr) {
 				temp = temp + s + ",";
 			}
 			return temp.substring(0, temp.length() - 1);
