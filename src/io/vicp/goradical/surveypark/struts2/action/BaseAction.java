@@ -15,7 +15,7 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T>, Prep
 
 	public BaseAction() {
 		try {
-			ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
+			ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
 			Class clazz = (Class) type.getActualTypeArguments()[0];
 			model = (T) clazz.newInstance();
 		} catch (InstantiationException e) {

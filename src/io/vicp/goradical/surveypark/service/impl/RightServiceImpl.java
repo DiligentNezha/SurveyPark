@@ -84,7 +84,7 @@ public class RightServiceImpl extends BaseServiceImpl<Right> implements RightSer
 	}
 
 	/**
-	 * 鼻梁更新权限
+	 * 批量更新权限
 	 *
 	 * @param allRights
 	 */

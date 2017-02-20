@@ -23,7 +23,7 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 
 	public BaseServiceImpl() {
 		//得到泛型化的超类
-		ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
+		ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
 		clazz = (Class<T>) type.getActualTypeArguments()[0];
 	}
 

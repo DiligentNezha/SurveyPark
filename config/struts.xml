@@ -153,5 +153,10 @@
 			    <param name="actionName">RoleAction_findAllRoles</param>
 		    </result>
 	    </action>
+
+	    <!-- UserAuthorizeAction -->
+	    <action name="UserAuthorizeAction_*" class="userAuthorizeAction" method="{1}">
+			<result name="userAuthorizeListPage">/userAuthorizeList.jsp</result>
+	    </action>
     </package>
 </struts>
