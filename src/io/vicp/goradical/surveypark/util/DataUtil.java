@@ -1,7 +1,10 @@
 package io.vicp.goradical.surveypark.util;
 
+import io.vicp.goradical.surveypark.model.BaseEntity;
+
 import java.io.*;
 import java.security.MessageDigest;
+import java.util.Set;
 
 /**
  * 数据工具类
@@ -56,4 +59,17 @@ public class DataUtil {
 		return null;
 	}
 
+	/**
+	 * 抽取实体的id，形成字符串
+	 */
+	public static String extractRightIds(Set<? extends BaseEntity> entities) {
+		String temp = "";
+		if (ValidateUtil.isValid(entities)) {
+			for (BaseEntity entity : entities) {
+				temp = temp + entity.getId() + ",";
+			}
+			return temp.substring(0, temp.length() - 1);
+		}
+		return temp;
+	}
 }

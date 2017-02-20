@@ -9,7 +9,9 @@ import java.util.Set;
 /**
  * 用户类
  */
-public class User {
+public class User extends BaseEntity{
+	private static final long serialVersionUID = 1599528378439781507L;
+
 	private Integer id;
 	private String email;
 	private String name;

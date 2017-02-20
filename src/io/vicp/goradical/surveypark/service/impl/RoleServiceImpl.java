@@ -5,6 +5,7 @@ import io.vicp.goradical.surveypark.model.security.Right;
 import io.vicp.goradical.surveypark.model.security.Role;
 import io.vicp.goradical.surveypark.service.RightService;
 import io.vicp.goradical.surveypark.service.RoleService;
+import io.vicp.goradical.surveypark.util.DataUtil;
 import io.vicp.goradical.surveypark.util.StringUtil;
 import io.vicp.goradical.surveypark.util.ValidateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
 		if (!ValidateUtil.isValid(roles)) {
 			return this.findAllEntities();
 		} else {
-			String hql = "from Role r where r.id not in(" + extractRightIds(roles) + ")";
+			String hql = "from Role r where r.id not in(" + DataUtil.extractRightIds(roles) + ")";
 			return this.findEntityByHQL(hql);
 		}
 	}
@@ -62,17 +63,4 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
 		return null;
 	}
 
-	/**
-	 * 抽取实体的id,形成字符串
-	 */
-	private String extractRightIds(Set<Role> roles) {
-		String temp = "";
-		if (ValidateUtil.isValid(roles)) {
-			for (Role e : roles) {
-				temp = temp + e.getId() + ",";
-			}
-			return temp.substring(0, temp.length() - 1);
-		}
-		return temp;
-	}
 }

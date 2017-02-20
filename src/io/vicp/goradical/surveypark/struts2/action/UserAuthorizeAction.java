@@ -26,6 +26,7 @@ public class UserAuthorizeAction extends BaseAction<User> {
 	private Integer userId;
 	//用户没有的授权
 	private List<Role> noOwnRoles;
+	private Integer[] ownRoleIds;
 
 	/**
 	 * 查询所有用户
@@ -44,6 +45,24 @@ public class UserAuthorizeAction extends BaseAction<User> {
 		model = userService.getEntity(userId);
 		noOwnRoles = roleService.findRolesNotInRange(model.getRoles());
 		return "editAuthorizePage";
+	}
+
+	/**
+	 * 更新授权
+	 * @return
+	 */
+	public String updateAuthorize() {
+		userService.updateAuthorize(model, ownRoleIds);
+		return "findAllUsersAction";
+	}
+
+	/**
+	 * 清除授权
+	 * @return
+	 */
+	public String clearAuthorize() {
+		userService.clearAuthorize(userId);
+		return "findAllUsersAction";
 	}
 
 	public List<User> getAllUsers() {
@@ -68,5 +87,13 @@ public class UserAuthorizeAction extends BaseAction<User> {
 
 	public void setNoOwnRoles(List<Role> noOwnRoles) {
 		this.noOwnRoles = noOwnRoles;
+	}
+
+	public void setOwnRoleIds(Integer[] ownRoleIds) {
+		this.ownRoleIds = ownRoleIds;
+	}
+
+	public Integer[] getOwnRoleIds() {
+		return ownRoleIds;
 	}
 }

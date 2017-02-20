@@ -2,12 +2,12 @@ package io.vicp.goradical.surveypark.model;
 
 import io.vicp.goradical.surveypark.util.StringUtil;
 
-import java.io.Serializable;
-
 /**
  * 问题类
  */
-public class Question implements Serializable{
+public class Question extends BaseEntity{
+	private static final long serialVersionUID = -1617887525232064180L;
+
 	private static final String RN = "\r\n";
 
 	private Integer id;

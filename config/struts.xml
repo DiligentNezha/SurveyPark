@@ -157,6 +157,11 @@
 	    <!-- UserAuthorizeAction -->
 	    <action name="UserAuthorizeAction_*" class="userAuthorizeAction" method="{1}">
 			<result name="userAuthorizeListPage">/userAuthorizeList.jsp</result>
+			<result name="editAuthorizePage">/userAuthorize.jsp</result>
+		    <result name="findAllUsersAction" type="redirectAction">
+			    <param name="namespace">/</param>
+			    <param name="actionName">UserAuthorizeAction_findAllUsers</param>
+		    </result>
 	    </action>
     </package>
 </struts>

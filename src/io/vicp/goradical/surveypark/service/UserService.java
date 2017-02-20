@@ -21,4 +21,17 @@ public interface UserService extends BaseService<User>{
 	 * @return
 	 */
 	User validateLoginInfo(String email, String password);
+
+	/**
+	 * 更新授权(只能更新角色设置)
+	 * @param model
+	 * @param ownRoleIds
+	 */
+	void updateAuthorize(User model, Integer[] ownRoleIds);
+
+	/**
+	 * 清除用户授权
+	 * @param userId
+	 */
+	void clearAuthorize(Integer userId);
 }

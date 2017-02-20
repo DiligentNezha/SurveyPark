@@ -1,12 +1,16 @@
 package io.vicp.goradical.surveypark.model.security;
 
+import io.vicp.goradical.surveypark.model.BaseEntity;
+
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * 角色
  */
-public class Role {
+public class Role extends BaseEntity{
+	private static final long serialVersionUID = 629933036597773539L;
+
 	private Integer id;
 	private String roleName;
 	private String roleValue;

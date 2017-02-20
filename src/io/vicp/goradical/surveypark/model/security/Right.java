@@ -1,9 +1,13 @@
 package io.vicp.goradical.surveypark.model.security;
 
+import io.vicp.goradical.surveypark.model.BaseEntity;
+
 /**
  * 权限
  */
-public class Right {
+public class Right extends BaseEntity{
+	private static final long serialVersionUID = 1885811947450336293L;
+
 	private Integer id;
 	private String rightName = "未命名";
 	private String rightUrl;

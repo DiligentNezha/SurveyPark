@@ -1,13 +1,14 @@
 package io.vicp.goradical.surveypark.model;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * 页面类
  */
-public class Page implements Serializable{
+public class Page extends BaseEntity{
+	private static final long serialVersionUID = 597266468011815154L;
+
 	private Integer id;
 	private String title = "未命名";
 	private String description;

@@ -2,6 +2,7 @@ package io.vicp.goradical.surveypark.service.impl;
 
 import io.vicp.goradical.surveypark.model.security.Right;
 import io.vicp.goradical.surveypark.service.RightService;
+import io.vicp.goradical.surveypark.util.DataUtil;
 import io.vicp.goradical.surveypark.util.StringUtil;
 import io.vicp.goradical.surveypark.util.ValidateUtil;
 import org.springframework.stereotype.Service;
@@ -118,20 +119,9 @@ public class RightServiceImpl extends BaseServiceImpl<Right> implements RightSer
 			return this.findAllEntities();
 		}
 		else{
-			String hql = "from Right r where r.id not in("+ extractRightIds(rights)+")" ;
+			String hql = "from Right r where r.id not in("+ DataUtil.extractRightIds(rights)+")" ;
 			return this.findEntityByHQL(hql);
 		}
-	}
-
-	private String extractRightIds(Set<Right> rights) {
-		String temp = "" ;
-		if(ValidateUtil.isValid(rights)){
-			for(Right e: rights){
-				temp = temp + e.getId() + "," ;
-			}
-			return temp.substring(0,temp.length() - 1);
-		}
-		return temp ;
 	}
 
 	/**
