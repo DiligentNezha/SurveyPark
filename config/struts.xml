@@ -23,7 +23,8 @@
 			    <interceptor-ref name="loginInterceptor"></interceptor-ref>
 			    <interceptor-ref name="defaultStack">
 				    <param name="modelDriven.refreshModelBeforeResult">true</param>
-				    <param name="fileUpload.maximumSize">1024000</param>
+				    <!-- 10MB -->
+				    <param name="fileUpload.maximumSize">10485760</param>
 				    <param name="fileUpload.allowedExtensions">.jpg,.jpeg,.png,.bmp,.gif</param>
 				    <param name="fileUpload.allowedTypes">image/jpg,image/jpeg,image/png,image/gif,image/bmp</param>
 			    </interceptor-ref>
@@ -162,6 +163,13 @@
 			    <param name="namespace">/</param>
 			    <param name="actionName">UserAuthorizeAction_findAllUsers</param>
 		    </result>
+	    </action>
+
+
+	    <!-- FileUploadAction -->
+	    <action name="FileUploadAction_*" class="fileUploadAction" method="{1}">
+		    <result name="imageUploadSuccess">/fileUpload.jsp</result>
+		    <result name="imageGetSuccess">/getImageFile.jsp</result>
 	    </action>
     </package>
 </struts>

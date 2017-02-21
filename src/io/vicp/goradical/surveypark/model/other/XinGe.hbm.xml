@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="io.vicp.goradical.surveypark.model.other">
+	<class name="XinGe" table="t_xinge">
+		<id name="id" column="id" type="integer">
+			<generator class="identity" />
+		</id>
+		<property name="latitude" type="string"></property>
+		<property name="uploadTime" type="timestamp" column="upload_time"></property>
+		<property name="imgPath" type="string" column="img_path"></property>
+		<property name="info" type="string"></property>
+		<property name="extraInfo1" type="string"></property>
+		<property name="extraInfo2" type="string"></property>
+		<property name="extraInfo3" type="string"></property>
+		<property name="extraInfo4" type="string"></property>
+		<property name="extraInfo5" type="string"></property>
+	</class>
+</hibernate-mapping>
