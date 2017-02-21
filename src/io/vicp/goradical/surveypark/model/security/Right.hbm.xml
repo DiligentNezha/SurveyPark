@@ -12,5 +12,6 @@
 		<property name="rightDesc" column="right_desc" type="string" length="200" />
 		<property name="rightPos" column="right_pos" type="integer" update="false"/>
 		<property name="rightCode" column="right_code" type="long" update="false" />
+		<property name="common" column="common" type="boolean"></property>
 	</class>
 </hibernate-mapping>

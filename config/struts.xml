@@ -13,14 +13,14 @@
     <package name="default" namespace="/" extends="struts-default,jfreechart-default">
 
 	    <interceptors>
-		    <!-- 注册登陆拦截器 -->
-		    <interceptor name="loginInterceptor" class="io.vicp.goradical.surveypark.struts2.interceptor.LoginInterceptor"></interceptor>
+		    <!-- 权限过滤拦截器 -->
+		    <interceptor name="rightFilterInterceptor" class="io.vicp.goradical.surveypark.struts2.interceptor.RightFilterInterceptor"></interceptor>
 		    <!-- 捕获Url拦截器-->
 		    <interceptor name="catchUrlInterceptor" class="io.vicp.goradical.surveypark.struts2.interceptor.CatchUrlInterceptor"></interceptor>
 		    <!-- 定义拦截器栈-->
 		    <interceptor-stack name="surveyParkStack">
 			    <interceptor-ref name="catchUrlInterceptor"></interceptor-ref>
-			    <interceptor-ref name="loginInterceptor"></interceptor-ref>
+			    <interceptor-ref name="rightFilterInterceptor"></interceptor-ref>
 			    <interceptor-ref name="defaultStack">
 				    <param name="modelDriven.refreshModelBeforeResult">true</param>
 				    <!-- 10MB -->

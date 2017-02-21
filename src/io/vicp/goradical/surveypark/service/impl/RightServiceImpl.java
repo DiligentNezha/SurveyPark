@@ -91,10 +91,10 @@ public class RightServiceImpl extends BaseServiceImpl<Right> implements RightSer
 	 */
 	@Override
 	public void batchUpdateRights(List<Right> allRights) {
-		String hql = "update Right r set r.rightName = ? where r.id = ?";
+		String hql = "update Right r set r.rightName = ?, r.common = ? where r.id = ?";
 		if (ValidateUtil.isValid(allRights)) {
 			for (Right r : allRights) {
-				batchEntityByHQL(hql, r.getRightName(), r.getId());
+				batchEntityByHQL(hql, r.getRightName(), r.isCommon(), r.getId());
 			}
 		}
 
