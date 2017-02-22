@@ -63,10 +63,26 @@
 		</tx:attributes>
 	</tx:advice>
 
+	<!-- 日志记录 -->
+	<bean id="logger" class="io.vicp.goradical.surveypark.advice.Logger"/>
+
 	<!-- 3. 配置事务切入点, 再把事务属性和事务切入点关联起来 -->
 	<aop:config>
-		<aop:pointcut expression="execution(* *..*Service.*(..))" id="txPointcut"/>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+		<!-- 事务通知 -->
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..*Service.*(..))
+											and !bean(logService)"/>
+		<!-- 切入点通知 -->
+		<aop:aspect id="loggerAspect" ref="logger">
+			<aop:around method="record" pointcut="(execution(* *..*Service.save*(..))
+											or execution(* *..*Service.update*(..))
+											or execution(* *..*Service.delete*(..))
+											or execution(* *..*Service.batch*(..))
+											or execution(* *..*Service.new*(..))
+											or execution(* *..*Service.move*(..))
+											or execution(* *..*Service.clear*(..))
+											or execution(* *..*Service.toggle*(..)))
+											and !bean(logService)"/>
+		</aop:aspect>
 	</aop:config>
 
 </beans>

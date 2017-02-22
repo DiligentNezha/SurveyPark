@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="io.vicp.goradical.surveypark.model">
+	<class name="Log" table="t_logs">
+		<id name="id" column="id" type="integer">
+			<generator class="native"></generator>
+		</id>
+		<property name="operator" column="operator" type="string" length="100"/>
+		<property name="operName" column="oper_name" type="string" length="100"/>
+		<property name="operParams" column="oper_params" type="string" length="500"/>
+		<property name="operResult" column="oper_result" type="string" length="500"/>
+		<property name="resultMsg" column="result_msg" type="string" length="500"/>
+		<property name="operTime" column="oper_time" type="timestamp"/>
+	</class>
+</hibernate-mapping>
