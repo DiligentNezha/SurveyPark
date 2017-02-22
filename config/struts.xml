@@ -36,6 +36,7 @@
 		<!-- 定义全局结果 -->
 	    <global-results>
 			<result name="login">/index.jsp</result>
+		    <result name="error_no_right">/index.jsp</result>
 		    <result name="designSurveyAction" type="redirectAction">
 			    <param name="namespace">/</param>
 			    <param name="actionName">SurveyAction_designSurvey</param>

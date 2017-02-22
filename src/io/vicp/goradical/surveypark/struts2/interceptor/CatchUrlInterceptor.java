@@ -2,7 +2,7 @@ package io.vicp.goradical.surveypark.struts2.interceptor;
 
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionProxy;
-import com.opensymphony.xwork2.interceptor.Interceptor;
+import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import io.vicp.goradical.surveypark.service.RightService;
 import io.vicp.goradical.surveypark.util.ValidateUtil;
 import org.apache.struts2.ServletActionContext;
@@ -14,16 +14,7 @@ import javax.servlet.ServletContext;
 /**
  * 捕获URL拦截器
  */
-public class CatchUrlInterceptor implements Interceptor {
-	@Override
-	public void destroy() {
-
-	}
-
-	@Override
-	public void init() {
-
-	}
+public class CatchUrlInterceptor extends AbstractInterceptor {
 
 	@Override
 	public String intercept(ActionInvocation actionInvocation) throws Exception {
