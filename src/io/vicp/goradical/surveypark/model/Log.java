@@ -5,10 +5,10 @@ import java.util.Date;
 /**
  * Log
  */
-public class Log extends BaseEntity{
+public class Log{
 	private static final long serialVersionUID = -1918859923631021537L;
 
-	private Integer id;
+	private Long id;
 
 	private String operator;
 	private String operName;
@@ -17,18 +17,16 @@ public class Log extends BaseEntity{
 	private String resultMsg;
 	private Date operTime = new Date();
 
-	@Override
-	public Integer getId() {
-		return null;
-	}
-
-	@Override
-	public void setId(Integer id) {
-
-	}
-
 	public static long getSerialVersionUID() {
 		return serialVersionUID;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getOperator() {

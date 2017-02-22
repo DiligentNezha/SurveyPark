@@ -69,8 +69,7 @@
 	<!-- 3. 配置事务切入点, 再把事务属性和事务切入点关联起来 -->
 	<aop:config>
 		<!-- 事务通知 -->
-		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..*Service.*(..))
-											and !bean(logService)"/>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..*Service.*(..))"/>
 		<!-- 切入点通知 -->
 		<aop:aspect id="loggerAspect" ref="logger">
 			<aop:around method="record" pointcut="(execution(* *..*Service.save*(..))
