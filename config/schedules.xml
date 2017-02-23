@@ -19,7 +19,7 @@
 		<property name="jobDetail" ref="jobDetailBean"/>
 		<!-- corn表达式 -->
 		<property name="cronExpression">
-			<value>0 39 16 23 * ?</value>
+			<value>0 0 0 15 * ?</value>
 		</property>
 	</bean>
 

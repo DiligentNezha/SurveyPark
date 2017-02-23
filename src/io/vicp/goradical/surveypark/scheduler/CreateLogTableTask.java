@@ -12,8 +12,12 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
  */
 public class CreateLogTableTask extends QuartzJobBean{
 
-	@Autowired
 	private LogService logService;
+
+	@Autowired
+	public void setLogService(LogService logService) {
+		this.logService = logService;
+	}
 
 	/**
 	 * 生成日志表

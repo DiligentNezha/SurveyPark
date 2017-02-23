@@ -96,4 +96,15 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 	protected Session getCurrentSession() {
 		return ((BaseDaoImpl) dao).getSessionFactory().getCurrentSession();
 	}
+
+	/**
+	 * 执行原生查询
+	 *
+	 * @param sql
+	 * @param objects
+	 */
+	@Override
+	public List executeSQLQuery(String sql, Object... objects) {
+		return dao.executeSQLQuery(sql, objects);
+	}
 }

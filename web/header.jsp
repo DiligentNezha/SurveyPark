@@ -15,6 +15,7 @@
 		<s:a namespace="/" action="RoleAction_findAllRoles">[角色管理]</s:a>&nbsp;
 		<s:a namespace="/" action="RightAction_findAllRights">[权限管理]</s:a>&nbsp;
 		<s:a namespace="/" action="LogAction_findAllLogs">[日志管理]</s:a>&nbsp;
+		<s:a namespace="/" action="LogAction_findNearestLogs">[最近日志管理]</s:a>&nbsp;
 	</div>
 </div>
 <div class="divWhiteLine"></div>

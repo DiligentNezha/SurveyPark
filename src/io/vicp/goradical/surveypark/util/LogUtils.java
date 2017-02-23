@@ -1,5 +1,6 @@
 package io.vicp.goradical.surveypark.util;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 
 /**
@@ -25,6 +26,8 @@ public class LogUtils {
 			year--;
 			month = month + 12;
 		}
-		return "t_logs_" + year + "_" + month;
+		DecimalFormat df = new DecimalFormat();
+		df.applyPattern("00");
+		return "t_logs_" + year + "_" + df.format(month);
 	}
 }

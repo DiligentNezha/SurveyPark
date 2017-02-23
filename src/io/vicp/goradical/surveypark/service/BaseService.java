@@ -21,4 +21,9 @@ public interface BaseService<T> {
 	Object uniqueResult(String hql, Object... objects);
 	//查询所有实体
 	List<T> findAllEntities();
+
+	/**
+	 * 执行原生查询
+	 */
+	List executeSQLQuery(String sql, Object... objects);
 }

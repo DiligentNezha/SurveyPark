@@ -93,6 +93,21 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	/**
+	 * 执行原生查询
+	 *
+	 * @param sql
+	 * @param objects
+	 */
+	@Override
+	public List executeSQLQuery(String sql, Object... objects) {
+		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		for (int i = 0; i < objects.length; i++) {
+			query.setParameter(i, objects[i]);
+		}
+		return query.list();
+	}
+
+	/**
 	 * 无实际作用，仅作为方便SQL语句书写
 	 * @return
 	 */

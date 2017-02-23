@@ -27,6 +27,15 @@ public class LogAction extends BaseAction<Log> {
 		return "logListPage";
 	}
 
+	/**
+	 * 查询最近的日志
+	 * @return
+	 */
+	public String findNearestLogs() {
+		logs = logService.finNearestLogs(2);
+		return "logPageList";
+	}
+
 	public List<Log> getLogs() {
 		return logs;
 	}
