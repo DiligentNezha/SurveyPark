@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 任务明细bean -->
+	<bean name="jobDetailBean" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<!-- 通过任务类指定石英任务 -->
+		<property name="jobClass" value="io.vicp.goradical.surveypark.scheduler.CreateLogTableTask"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="logService" value-ref="logService"/>
+			</map>
+		</property>
+	</bean>
+
+	<!-- cron 触发器bean, 设置石英任务的调度策略 -->
+	<bean id="cronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobDetailBean"/>
+		<!-- corn表达式 -->
+		<property name="cronExpression">
+			<value>0 39 16 23 * ?</value>
+		</property>
+	</bean>
+
+	<!-- 调度工厂bean,激活触发器运行 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="cronTriggerBean"></ref>
+			</list>
+		</property>
+	</bean>
+</beans>

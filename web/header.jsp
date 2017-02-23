@@ -14,7 +14,7 @@
 		<s:a namespace="/" action="UserAuthorizeAction_findAllUsers">[用户授权管理]</s:a>&nbsp;
 		<s:a namespace="/" action="RoleAction_findAllRoles">[角色管理]</s:a>&nbsp;
 		<s:a namespace="/" action="RightAction_findAllRights">[权限管理]</s:a>&nbsp;
-		[日志管理]&nbsp;
+		<s:a namespace="/" action="LogAction_findAllLogs">[日志管理]</s:a>&nbsp;
 	</div>
 </div>
 <div class="divWhiteLine"></div>

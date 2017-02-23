@@ -166,6 +166,10 @@
 		    </result>
 	    </action>
 
+	    <!-- LogAction -->
+	    <action name="LogAction_*" class="logAction" method="{1}">
+		    <result name="logListPage">/logList.jsp</result>
+	    </action>
 
 	    <!-- FileUploadAction -->
 	    <action name="FileUploadAction_*" class="fileUploadAction" method="{1}">

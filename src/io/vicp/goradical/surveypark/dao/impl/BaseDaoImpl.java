@@ -2,6 +2,7 @@ package io.vicp.goradical.surveypark.dao.impl;
 
 import io.vicp.goradical.surveypark.dao.BaseDao;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -52,6 +53,15 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 			query.setParameter(i, objects[i]);
 		}
 		query.executeUpdate();
+	}
+
+	@Override
+	public void executeSQL(String sql, Object... objects) {
+		SQLQuery sqlQuery = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		for (int i = 0; i < objects.length; i++) {
+			sqlQuery.setParameter(i, objects[i]);
+		}
+		sqlQuery.executeUpdate();
 	}
 
 	@Override

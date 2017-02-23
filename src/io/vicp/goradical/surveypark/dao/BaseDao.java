@@ -13,6 +13,10 @@ public interface BaseDao<T> {
 	void updateEntity(T t);
 	void deleteEntity(T t);
 	void batchEntityByHQL(String hql, Object... objects);
+
+	//执行原生SQL语句
+	void executeSQL(String sql, Object... objects);
+
 	//读操作
 	T loadEntity(Integer id);
 	T getEntity(Integer id);

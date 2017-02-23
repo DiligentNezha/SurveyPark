@@ -7,15 +7,14 @@ import org.springframework.stereotype.Service;
 @Service(value = "logService")
 public class LogServiceImpl extends BaseServiceImpl<Log> implements LogService {
 
+	/**
+	 * 通过表名生成日志表
+	 *
+	 * @param tableName
+	 */
 	@Override
-	public void saveLog(Log log) {
-		Log temp = new Log();
-		temp.setOperator(log.getOperator());
-		temp.setOperName(log.getOperName());
-		temp.setOperParams(log.getOperParams());
-		temp.setOperResult(log.getResultMsg());
-		temp.setResultMsg(log.getResultMsg());
-		temp.setOperTime(log.getOperTime());
-		getCurrentSession().save(temp);
+	public void createLogTable(String tableName) {
+		String sql = "create table if not exists " + tableName + " like t_logs";
+		executeSQL(sql);
 	}
 }

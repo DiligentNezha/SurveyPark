@@ -53,6 +53,11 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@Override
+	public void executeSQL(String sql, Object... objects) {
+		dao.executeSQL(sql, objects);
+	}
+
+	@Override
 	public T loadEntity(Integer id) {
 		return dao.loadEntity(id);
 	}
