@@ -33,7 +33,7 @@ public class LogAction extends BaseAction<Log> {
 	 */
 	public String findNearestLogs() {
 		logs = logService.finNearestLogs(2);
-		return "logPageList";
+		return "logListPage";
 	}
 
 	public List<Log> getLogs() {
