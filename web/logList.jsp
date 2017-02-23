@@ -53,7 +53,7 @@
 			<tr>
 				<td colspan="10" class="tdPHeaderR">
 					<s:form namespace="/" action="LogAction_findNearestLogs">
-						<s:textfield name="monthNum" cssClass="text" cssStyle="width:10px"/>
+						<s:textfield name="monthNum" cssClass="text" cssStyle="width:100px"/>
 						<s:submit cssClass="button"/>
 					</s:form>
 				</td>

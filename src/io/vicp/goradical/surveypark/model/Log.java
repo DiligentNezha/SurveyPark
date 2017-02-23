@@ -5,10 +5,10 @@ import java.util.Date;
 /**
  * Log
  */
-public class Log{
+public class Log {
 	private static final long serialVersionUID = -1918859923631021537L;
 
-	private Long id;
+	private String id;
 
 	private String operator;
 	private String operName;
@@ -21,11 +21,11 @@ public class Log{
 		return serialVersionUID;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

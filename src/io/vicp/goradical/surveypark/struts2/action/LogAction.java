@@ -18,6 +18,8 @@ public class LogAction extends BaseAction<Log> {
 
 	private List<Log> logs;
 
+	//默认两个月份的日志
+	private int monthNum = 2;
 	/**
 	 * 查询全部日志
 	 * @return
@@ -32,7 +34,7 @@ public class LogAction extends BaseAction<Log> {
 	 * @return
 	 */
 	public String findNearestLogs() {
-		logs = logService.finNearestLogs(2);
+		logs = logService.finNearestLogs(monthNum);
 		return "logListPage";
 	}
 
@@ -42,5 +44,13 @@ public class LogAction extends BaseAction<Log> {
 
 	public void setLogs(List<Log> logs) {
 		this.logs = logs;
+	}
+
+	public int getMonthNum() {
+		return monthNum;
+	}
+
+	public void setMonthNum(int monthNum) {
+		this.monthNum = monthNum;
 	}
 }

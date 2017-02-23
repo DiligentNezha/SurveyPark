@@ -4,8 +4,8 @@
 		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="io.vicp.goradical.surveypark.model">
 	<class name="Log" table="t_logs">
-		<id name="id" column="id" type="long">
-			<generator class="native"></generator>
+		<id name="id" column="id" type="string">
+			<generator class="uuid"></generator>
 		</id>
 		<property name="operator" column="operator" type="string" length="100"/>
 		<property name="operName" column="oper_name" type="string" length="100"/>

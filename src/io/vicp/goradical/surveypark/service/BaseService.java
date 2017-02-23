@@ -25,5 +25,5 @@ public interface BaseService<T> {
 	/**
 	 * 执行原生查询
 	 */
-	List executeSQLQuery(String sql, Object... objects);
+	List executeSQLQuery(Class clazz, String sql, Object... objects);
 }

@@ -104,7 +104,7 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 	 * @param objects
 	 */
 	@Override
-	public List executeSQLQuery(String sql, Object... objects) {
-		return dao.executeSQLQuery(sql, objects);
+	public List executeSQLQuery(Class clazz, String sql, Object... objects) {
+		return dao.executeSQLQuery(clazz, sql, objects);
 	}
 }

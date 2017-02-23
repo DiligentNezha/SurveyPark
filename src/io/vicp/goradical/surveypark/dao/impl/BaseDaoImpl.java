@@ -99,8 +99,12 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 * @param objects
 	 */
 	@Override
-	public List executeSQLQuery(String sql, Object... objects) {
-		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+	public List executeSQLQuery(Class clazz, String sql, Object... objects) {
+		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		//添加实体类
+		if (clazz != null) {
+			query.addEntity(clazz);
+		}
 		for (int i = 0; i < objects.length; i++) {
 			query.setParameter(i, objects[i]);
 		}
