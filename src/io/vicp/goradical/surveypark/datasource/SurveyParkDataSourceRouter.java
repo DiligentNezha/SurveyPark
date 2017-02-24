@@ -17,6 +17,7 @@ public class SurveyParkDataSourceRouter extends AbstractRoutingDataSource {
 		SurveyParkToken currentToken = SurveyParkToken.getCurrentToken();
 		if (currentToken != null) {
 			Integer id = currentToken.getSurvey().getId();
+			//解除绑定
 			SurveyParkToken.unbindToken();
 			return ((id % 2) == 0) ? "even" : "odd";
 		}

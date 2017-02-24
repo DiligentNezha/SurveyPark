@@ -63,7 +63,7 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 
-	<!-- 2. 配置事务属性 -->
+	<!-- 2. 配置事务通知 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<!-- 写操作 -->
@@ -81,15 +81,16 @@
 		</tx:attributes>
 	</tx:advice>
 
+
 	<!-- 日志记录 -->
 	<bean id="logger" class="io.vicp.goradical.surveypark.advice.Logger"/>
 
 	<!-- 3. 配置事务切入点, 再把事务属性和事务切入点关联起来 -->
 	<aop:config>
 		<!-- 事务通知 -->
-		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..*Service.*(..))" order="1"/>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..*Service.*(..))" order="2"/>
 		<!-- 切入点通知 -->
-		<aop:aspect id="loggerAspect" ref="logger" order="0">
+		<aop:aspect id="loggerAspect" ref="logger" order="1">
 			<aop:around method="record" pointcut="(execution(* *..*Service.save*(..))
 											or execution(* *..*Service.update*(..))
 											or execution(* *..*Service.delete*(..))
