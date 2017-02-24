@@ -1,5 +1,6 @@
 package io.vicp.goradical.surveypark.struts2.action;
 
+import io.vicp.goradical.surveypark.datasource.SurveyParkToken;
 import io.vicp.goradical.surveypark.model.Answer;
 import io.vicp.goradical.surveypark.model.Page;
 import io.vicp.goradical.surveypark.model.Survey;
@@ -148,6 +149,13 @@ public class EngageSurveyAction extends BaseAction<Survey> implements ServletCon
 		} else if (submitName.endsWith("done")) {
 			//完成
 			mergeParamsIntoSession();
+
+			//绑定token到当前线程中
+			SurveyParkToken token = new SurveyParkToken();
+			token.setSurvey(getCurrentSurvey());
+			//绑定令牌
+			SurveyParkToken.bindToken(token);
+
 			//答案入库
 			surveyService.saveAnswers(processAnswers());
 			clearSessionData();

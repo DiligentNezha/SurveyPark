@@ -3,6 +3,7 @@ package io.vicp.goradical.surveypark.service.impl;
 import io.vicp.goradical.surveypark.model.Log;
 import io.vicp.goradical.surveypark.service.LogService;
 import io.vicp.goradical.surveypark.util.LogUtils;
+import io.vicp.goradical.surveypark.util.StringUtil;
 import org.hibernate.id.UUIDHexGenerator;
 import org.springframework.stereotype.Service;
 
@@ -58,6 +59,11 @@ public class LogServiceImpl extends BaseServiceImpl<Log> implements LogService {
 	public void saveEntity(Log log) {
 		String sql = "insert into " + LogUtils.generateLogTableName(0) + " values (?, ?, ?, ?, ?, ?, ?)";
 		UUIDHexGenerator uuid = new UUIDHexGenerator();
-		executeSQL(sql, ((String) uuid.generate(null, null)), log.getOperator(), log.getOperName(), log.getOperParams(), log.getOperResult(), log.getResultMsg(), log.getOperTime());
+		executeSQL(sql, uuid.generate(null, null), log.getOperator(),
+				StringUtil.getDescString(log.getOperName(), 255),
+				StringUtil.getDescString(log.getOperParams(), 255),
+				StringUtil.getDescString(log.getOperResult(), 255),
+				StringUtil.getDescString(log.getResultMsg(), 255),
+				log.getOperTime());
 	}
 }

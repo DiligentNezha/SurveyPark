@@ -28,6 +28,10 @@ public class FileUploadAction extends BaseAction<XinGe> implements ServletContex
 
 	private ServletContext sc;
 
+	public String getInfo() {
+		return "info";
+	}
+
 	public String getImageFile() {
 		model = xinGeService.getEntity(xid);
 		return "imageGetSuccess";

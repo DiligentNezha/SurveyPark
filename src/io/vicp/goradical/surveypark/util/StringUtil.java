@@ -55,9 +55,9 @@ public class StringUtil {
 	 * @param str
 	 * @return
 	 */
-	public static String getDescString(String str) {
-		if (str != null && str.trim().length() > 30) {
-			return str.substring(0, 30);
+	public static String getDescString(String str, int lenth) {
+		if (str != null && str.trim().length() > lenth) {
+			return str.substring(0, lenth);
 		}
 		return str;
 	}

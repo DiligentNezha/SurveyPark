@@ -91,13 +91,13 @@
 								<s:property value="operName" />
 							</td>
 							<td>
-								<span title='<s:property value="operParams"/>'><s:property value="@io.vicp.goradical.surveypark.util.StringUtil@getDescString(operParams)"/></span>
+								<span title='<s:property value="operParams"/>'><s:property value="@io.vicp.goradical.surveypark.util.StringUtil@getDescString(operParams, 30)"/></span>
 							</td>
 							<td>
-								<span title='<s:property value="operResult"/>'><s:property value="@io.vicp.goradical.surveypark.util.StringUtil@getDescString(operResult)"/></span>
+								<span title='<s:property value="operResult"/>'><s:property value="@io.vicp.goradical.surveypark.util.StringUtil@getDescString(operResult, 30)"/></span>
 							</td>
 							<td>
-								<span title='<s:property value="resultMsg"/>'><s:property value="@io.vicp.goradical.surveypark.util.StringUtil@getDescString(resultMsg)"/></span>
+								<span title='<s:property value="resultMsg"/>'><s:property value="@io.vicp.goradical.surveypark.util.StringUtil@getDescString(resultMsg, 30)"/></span>
 							</td>
 							<td>
 								<s:date name="operTime" format="yy/MM/dd hh:mm:ss"/>

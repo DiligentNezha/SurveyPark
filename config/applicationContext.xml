@@ -15,7 +15,7 @@
 	<!-- 导入资源文件 -->
 	<context:property-placeholder location="classpath:db.properties"/>
 
-	<!-- 配置 C3P0 数据源 -->
+	<!-- 配置 C3P0 数据源 主库 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="user" value="${jdbc.user}"/>
 		<property name="password" value="${jdbc.password}"/>
@@ -26,9 +26,27 @@
 		<property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
 	</bean>
 
+	<!-- 配置 C3P0 数据源 从库-->
+	<bean id="dataSource_1" parent="dataSource">
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl_1}"/>
+	</bean>
+
+	<!-- 数据源路由器 -->
+	<bean id="dataSourceRouter" class="io.vicp.goradical.surveypark.datasource.SurveyParkDataSourceRouter">
+		<!-- 数据源集合 -->
+		<property name="targetDataSources">
+			<map>
+				<entry key="odd" value-ref="dataSource"/>
+				<entry key="even" value-ref="dataSource_1"/>
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="dataSource"/>
+	</bean>
+
 	<!-- 配置 SessionFactory -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
+		<!-- 注入数据源路由器 -->
+		<property name="dataSource" ref="dataSourceRouter"/>
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"/>
 		<property name="mappingLocations">
 			<list>
@@ -69,9 +87,9 @@
 	<!-- 3. 配置事务切入点, 再把事务属性和事务切入点关联起来 -->
 	<aop:config>
 		<!-- 事务通知 -->
-		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..*Service.*(..))"/>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..*Service.*(..))" order="1"/>
 		<!-- 切入点通知 -->
-		<aop:aspect id="loggerAspect" ref="logger">
+		<aop:aspect id="loggerAspect" ref="logger" order="0">
 			<aop:around method="record" pointcut="(execution(* *..*Service.save*(..))
 											or execution(* *..*Service.update*(..))
 											or execution(* *..*Service.delete*(..))
