@@ -99,4 +99,10 @@ public class StatisticsServiceImpl implements StatisticsService {
 
 		return qsm;
 	}
+
+	@Override
+	public String statistics(Integer qid, boolean isJson) {
+		QuestionStatisticsModel statistics = statistics(qid);
+		return statistics.toString();
+	}
 }
