@@ -31,6 +31,8 @@
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/config/applicationContext.xml</file>
           <file>file://$MODULE_DIR$/config/schedules.xml</file>
+          <file>file://$MODULE_DIR$/web/WEB-INF/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/config/spring-remote.xml</file>
         </fileset>
       </configuration>
     </facet>

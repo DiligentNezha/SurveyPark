@@ -1,9 +1,13 @@
 package io.vicp.goradical.surveypark.model.statistics;
 
+import java.io.Serializable;
+
 /**
  * 选项统计模型
  */
-public class OptionStatisticsModel {
+public class OptionStatisticsModel implements Serializable{
+
+	private static final long serialVersionUID = -1203922235431342976L;
 	/**
 	 * 选项标签
 	 */

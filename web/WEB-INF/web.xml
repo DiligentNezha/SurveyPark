@@ -10,7 +10,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext.xml,classpath:schedules.xml</param-value>
+		<param-value>classpath:spring-hibernate.xml,classpath:schedules.xml</param-value>
 	</context-param>
 
 	<listener>
@@ -40,4 +40,18 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	<!-- 配置 spring 的远程方法调用-->
+	<servlet>
+		<servlet-name>service</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-remote.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>service</servlet-name>
+		<url-pattern>*.service</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

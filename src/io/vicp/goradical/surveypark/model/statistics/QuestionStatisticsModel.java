@@ -2,13 +2,17 @@ package io.vicp.goradical.surveypark.model.statistics;
 
 import io.vicp.goradical.surveypark.model.Question;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 问题统计模型
  */
-public class QuestionStatisticsModel {
+public class QuestionStatisticsModel implements Serializable{
+
+	private static final long serialVersionUID = -5241001647538203833L;
+
 	private Question question;
 	/**
 	 * 回答该问题的人数
