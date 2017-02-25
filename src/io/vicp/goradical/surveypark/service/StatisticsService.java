@@ -7,4 +7,5 @@ import io.vicp.goradical.surveypark.model.statistics.QuestionStatisticsModel;
  */
 public interface StatisticsService {
 	QuestionStatisticsModel statistics(Integer qid);
+	String statistics(Integer qid, boolean isJson);
 }

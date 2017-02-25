@@ -44,4 +44,13 @@ public class QuestionStatisticsModel implements Serializable{
 	public void setOsms(List<OptionStatisticsModel> osms) {
 		this.osms = osms;
 	}
+
+	@Override
+	public String toString() {
+		return "QuestionStatisticsModel{" +
+				"question=" + question +
+				", count=" + count +
+				", osms=" + osms +
+				'}';
+	}
 }
