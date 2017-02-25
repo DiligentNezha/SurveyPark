@@ -102,4 +102,19 @@ public class OptionStatisticsModel implements Serializable{
 	public void setCount(int count) {
 		this.count = count;
 	}
+
+	@Override
+	public String toString() {
+		return "OptionStatisticsModel{" +
+				"optionLabel='" + optionLabel + '\'' +
+				", optionIndex=" + optionIndex +
+				", matrixRowLabel='" + matrixRowLabel + '\'' +
+				", matrixRowIndex=" + matrixRowIndex +
+				", matrixColLabel='" + matrixColLabel + '\'' +
+				", matrixColIndex=" + matrixColIndex +
+				", matrixSelectLabel='" + matrixSelectLabel + '\'' +
+				", matrixSelectIndex=" + matrixSelectIndex +
+				", count=" + count +
+				'}';
+	}
 }
