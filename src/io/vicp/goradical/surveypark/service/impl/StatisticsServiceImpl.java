@@ -1,5 +1,6 @@
 package io.vicp.goradical.surveypark.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import io.vicp.goradical.surveypark.dao.BaseDao;
 import io.vicp.goradical.surveypark.model.Answer;
 import io.vicp.goradical.surveypark.model.Question;
@@ -103,6 +104,6 @@ public class StatisticsServiceImpl implements StatisticsService {
 	@Override
 	public String statistics(Integer qid, boolean isJson) {
 		QuestionStatisticsModel statistics = statistics(qid);
-		return statistics.toString();
+		return JSON.toJSONString(statistics);
 	}
 }
