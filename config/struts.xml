@@ -1,116 +1,118 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
-	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
-	"http://struts.apache.org/dtds/struts-2.3.dtd">
+		"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+		"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
 	<constant name="struts.ui.theme" value="simple"></constant>
 	<constant name="struts.devMode" value="true"></constant>
 	<!-- 允许静态方法访问 -->
-	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
 	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
 
-    <package name="default" namespace="/" extends="struts-default,jfreechart-default">
+	<package name="default" namespace="/" extends="struts-default,jfreechart-default">
 
-	    <interceptors>
-		    <!-- 权限过滤拦截器 -->
-		    <interceptor name="rightFilterInterceptor" class="io.vicp.goradical.surveypark.struts2.interceptor.RightFilterInterceptor"></interceptor>
-		    <!-- 捕获Url拦截器-->
-		    <interceptor name="catchUrlInterceptor" class="io.vicp.goradical.surveypark.struts2.interceptor.CatchUrlInterceptor"></interceptor>
-		    <!-- 定义拦截器栈-->
-		    <interceptor-stack name="surveyParkStack">
-			    <interceptor-ref name="catchUrlInterceptor"></interceptor-ref>
-			    <interceptor-ref name="rightFilterInterceptor"></interceptor-ref>
-			    <interceptor-ref name="defaultStack">
-				    <param name="modelDriven.refreshModelBeforeResult">true</param>
-				    <!-- 10MB -->
-				    <param name="fileUpload.maximumSize">10485760</param>
-				    <param name="fileUpload.allowedExtensions">.jpg,.jpeg,.png,.bmp,.gif</param>
-				    <param name="fileUpload.allowedTypes">image/jpg,image/jpeg,image/png,image/gif,image/bmp</param>
-			    </interceptor-ref>
-		    </interceptor-stack>
-	    </interceptors>
+		<interceptors>
+			<!-- 权限过滤拦截器 -->
+			<interceptor name="rightFilterInterceptor"
+			             class="io.vicp.goradical.surveypark.struts2.interceptor.RightFilterInterceptor"></interceptor>
+			<!-- 捕获Url拦截器-->
+			<interceptor name="catchUrlInterceptor"
+			             class="io.vicp.goradical.surveypark.struts2.interceptor.CatchUrlInterceptor"></interceptor>
+			<!-- 定义拦截器栈-->
+			<interceptor-stack name="surveyParkStack">
+				<interceptor-ref name="catchUrlInterceptor"></interceptor-ref>
+				<interceptor-ref name="rightFilterInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack">
+					<param name="modelDriven.refreshModelBeforeResult">true</param>
+					<!-- 10MB -->
+					<param name="fileUpload.maximumSize">10485760</param>
+					<param name="fileUpload.allowedExtensions">.jpg,.jpeg,.png,.bmp,.gif</param>
+					<param name="fileUpload.allowedTypes">image/jpg,image/jpeg,image/png,image/gif,image/bmp</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
 
-	    <!-- 定义默认栈 -->
-	    <default-interceptor-ref name="surveyParkStack"></default-interceptor-ref>
+		<!-- 定义默认栈 -->
+		<default-interceptor-ref name="surveyParkStack"></default-interceptor-ref>
 		<!-- 定义全局结果 -->
-	    <global-results>
+		<global-results>
 			<result name="login">/index.jsp</result>
-		    <result name="error_no_right">/index.jsp</result>
-		    <result name="designSurveyAction" type="redirectAction">
-			    <param name="namespace">/</param>
-			    <param name="actionName">SurveyAction_designSurvey</param>
-			    <param name="sid">${sid}</param>
-		    </result>
+			<result name="error_no_right">/index.jsp</result>
+			<result name="designSurveyAction" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">SurveyAction_designSurvey</param>
+				<param name="sid">${sid}</param>
+			</result>
 		</global-results>
 
-	    <!-- RegAction -->
+		<!-- RegAction -->
 		<action name="RegAction_*" class="regAction" method="{1}">
 			<result name="regPage">/reg.jsp</result>
 			<result name="input">/reg.jsp</result>
 			<result name="success">/index.jsp</result>
 		</action>
 
-	    <!-- LoginAction -->
+		<!-- LoginAction -->
 		<action name="LoginAction_*" class="loginAction" method="{1}">
 			<result name="loginPage">/index.jsp</result>
 			<result name="input">/index.jsp</result>
 			<result name="success">/index.jsp</result>
 		</action>
 
-	    <!-- SurveyAction -->
-	    <action name="SurveyAction_*" class="surveyAction" method="{1}">
-		    <result name="mySurveyListPage">/mySurveyList.jsp</result>
-		    <result name="designSurveyPage">/designSurvey.jsp</result>
-		    <result name="editSurveyPage">/editSurvey.jsp</result>
-		    <result name="addLogoPage">/addLogo.jsp</result>
-		    <result name="input">${inputPage}</result>
-		    <result name="analyzeSurveyListPage">/analyzeSurveyList.jsp</result>
-		    <result name="findMySurveyAction" type="redirectAction">
-			    <param name="namespace">/</param>
-			    <param name="actionName">SurveyAction_mySurveys</param>
-		    </result>
-	    </action>
+		<!-- SurveyAction -->
+		<action name="SurveyAction_*" class="surveyAction" method="{1}">
+			<result name="mySurveyListPage">/mySurveyList.jsp</result>
+			<result name="designSurveyPage">/designSurvey.jsp</result>
+			<result name="editSurveyPage">/editSurvey.jsp</result>
+			<result name="addLogoPage">/addLogo.jsp</result>
+			<result name="input">${inputPage}</result>
+			<result name="analyzeSurveyListPage">/analyzeSurveyList.jsp</result>
+			<result name="findMySurveyAction" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">SurveyAction_mySurveys</param>
+			</result>
+		</action>
 
-	    <!-- PageAction -->
-	    <action name="PageAction_*" class="pageAction" method="{1}">
-		    <result name="addPagePage">/editPage.jsp</result>
-		    <result name="editPagePage">/editPage.jsp</result>
-	    </action>
+		<!-- PageAction -->
+		<action name="PageAction_*" class="pageAction" method="{1}">
+			<result name="addPagePage">/editPage.jsp</result>
+			<result name="editPagePage">/editPage.jsp</result>
+		</action>
 
-	    <!-- PageAction -->
-	    <action name="QuestionAction_*" class="questionAction" method="{1}">
-		    <result name="selectQuestionTypePage">/selectQuestionType.jsp</result>
-		    <!-- 根据题型动态返回设计问题页面 -->
-		    <result name="0">/nonMatrixWithOtherQuestionDesign.jsp</result>
-		    <result name="1">/nonMatrixWithOtherQuestionDesign.jsp</result>
-		    <result name="2">/nonMatrixWithOtherQuestionDesign.jsp</result>
-		    <result name="3">/nonMatrixWithOtherQuestionDesign.jsp</result>
+		<!-- PageAction -->
+		<action name="QuestionAction_*" class="questionAction" method="{1}">
+			<result name="selectQuestionTypePage">/selectQuestionType.jsp</result>
+			<!-- 根据题型动态返回设计问题页面 -->
+			<result name="0">/nonMatrixWithOtherQuestionDesign.jsp</result>
+			<result name="1">/nonMatrixWithOtherQuestionDesign.jsp</result>
+			<result name="2">/nonMatrixWithOtherQuestionDesign.jsp</result>
+			<result name="3">/nonMatrixWithOtherQuestionDesign.jsp</result>
 
-		    <result name="4">/nonMatrixSelectQuestionDesign.jsp</result>
-		    <result name="5">/nonMatrixTextQuestionDesign.jsp</result>
+			<result name="4">/nonMatrixSelectQuestionDesign.jsp</result>
+			<result name="5">/nonMatrixTextQuestionDesign.jsp</result>
 
-		    <result name="6">/matrixNormalQuestionDesign.jsp</result>
-		    <result name="7">/matrixNormalQuestionDesign.jsp</result>
-		    <result name="8">/matrixSelectQuestionDesign.jsp</result>
-	    </action>
+			<result name="6">/matrixNormalQuestionDesign.jsp</result>
+			<result name="7">/matrixNormalQuestionDesign.jsp</result>
+			<result name="8">/matrixSelectQuestionDesign.jsp</result>
+		</action>
 
-	    <!-- MoveOrCopyPageAction-->
-	    <action name="MoveOrCopyPageAction_*" class="moveOrCopyPageAction" method="{1}">
+		<!-- MoveOrCopyPageAction-->
+		<action name="MoveOrCopyPageAction_*" class="moveOrCopyPageAction" method="{1}">
 			<result name="moveOrCopyPageListPage">/moveOrCopyPageList.jsp</result>
-	    </action>
+		</action>
 
-	    <!-- EngageSurveyAction-->
-	    <action name="EngageSurveyAction_*" class="engageSurveyAction" method="{1}">
+		<!-- EngageSurveyAction-->
+		<action name="EngageSurveyAction_*" class="engageSurveyAction" method="{1}">
 			<result name="engageSurveyListPage">/engageSurveyList.jsp</result>
 			<result name="engageSurveyPage">/engageSurvey.jsp</result>
 			<result name="engageSurveyAction" type="redirectAction">
 				<param name="namespace">/</param>
 				<param name="actionName">EngageSurveyAction_findAllAvailableSurveys</param>
 			</result>
-	    </action>
+		</action>
 
-	    <!-- ChartOutputAction -->
+		<!-- ChartOutputAction -->
 		<action name="ChartOutputAction" class="chartOutputAction">
 			<result name="success" type="chart">
 				<param name="height">300</param>
@@ -118,63 +120,63 @@
 			</result>
 		</action>
 
-	    <!-- MatrixStatisticsAction -->
-	    <action name="MatrixStatisticsAction" class="matrixStatisticsAction">
+		<!-- MatrixStatisticsAction -->
+		<action name="MatrixStatisticsAction" class="matrixStatisticsAction">
 			<result name="6">/matrixNormalStatistics.jsp</result>
 			<result name="7">/matrixNormalStatistics.jsp</result>
-		    <result name="8">/matrixSelectStatistics.jsp</result>
-	    </action>
+			<result name="8">/matrixSelectStatistics.jsp</result>
+		</action>
 
-	    <!-- CollectionAction -->
-	    <action name="CollectionSurveyAction" class="collectionSurveyAction">
+		<!-- CollectionAction -->
+		<action name="CollectionSurveyAction" class="collectionSurveyAction">
 			<result name="success" type="stream">
 				<param name="contentType">application/vnd.ms-excel</param>
 				<param name="inputName">is</param>
 				<param name="bufferSize">1024</param>
 			</result>
-	    </action>
+		</action>
 
-	    <!-- RightAction -->
-	    <action name="RightAction_*" class="rightAction" method="{1}">
+		<!-- RightAction -->
+		<action name="RightAction_*" class="rightAction" method="{1}">
 			<result name="rightListPage">/rightList.jsp</result>
 			<result name="addRightPage">/editRight.jsp</result>
 			<result name="editRightPage">/editRight.jsp</result>
-		    <result name="findAllRightAction" type="redirectAction">
-			    <param name="namespace">/</param>
-			    <param name="actionName">RightAction_findAllRights</param>
-		    </result>
-	    </action>
+			<result name="findAllRightAction" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">RightAction_findAllRights</param>
+			</result>
+		</action>
 
-	    <!-- RoleAction -->
-	    <action name="RoleAction_*" class="roleAction" method="{1}">
-		    <result name="roleListPage">/roleList.jsp</result>
-		    <result name="addRolePage">/editRole.jsp</result>
-		    <result name="editRolePage">/editRole.jsp</result>
-		    <result name="findAllRolesAction" type="redirectAction">
-			    <param name="namespace">/</param>
-			    <param name="actionName">RoleAction_findAllRoles</param>
-		    </result>
-	    </action>
+		<!-- RoleAction -->
+		<action name="RoleAction_*" class="roleAction" method="{1}">
+			<result name="roleListPage">/roleList.jsp</result>
+			<result name="addRolePage">/editRole.jsp</result>
+			<result name="editRolePage">/editRole.jsp</result>
+			<result name="findAllRolesAction" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">RoleAction_findAllRoles</param>
+			</result>
+		</action>
 
-	    <!-- UserAuthorizeAction -->
-	    <action name="UserAuthorizeAction_*" class="userAuthorizeAction" method="{1}">
+		<!-- UserAuthorizeAction -->
+		<action name="UserAuthorizeAction_*" class="userAuthorizeAction" method="{1}">
 			<result name="userAuthorizeListPage">/userAuthorizeList.jsp</result>
 			<result name="editAuthorizePage">/userAuthorize.jsp</result>
-		    <result name="findAllUsersAction" type="redirectAction">
-			    <param name="namespace">/</param>
-			    <param name="actionName">UserAuthorizeAction_findAllUsers</param>
-		    </result>
-	    </action>
+			<result name="findAllUsersAction" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">UserAuthorizeAction_findAllUsers</param>
+			</result>
+		</action>
 
-	    <!-- LogAction -->
-	    <action name="LogAction_*" class="logAction" method="{1}">
-		    <result name="logListPage">/logList.jsp</result>
-	    </action>
+		<!-- LogAction -->
+		<action name="LogAction_*" class="logAction" method="{1}">
+			<result name="logListPage">/logList.jsp</result>
+		</action>
 
-	    <!-- FileUploadAction -->
-	    <action name="FileUploadAction_*" class="fileUploadAction" method="{1}">
-		    <result name="imageUploadSuccess">/fileUpload.jsp</result>
-		    <result name="imageGetSuccess">/getImageFile.jsp</result>
-	    </action>
-    </package>
+		<!-- FileUploadAction -->
+		<action name="FileUploadAction_*" class="fileUploadAction" method="{1}">
+			<result name="imageUploadSuccess">/fileUpload.jsp</result>
+			<result name="imageGetSuccess">/getImageFile.jsp</result>
+		</action>
+	</package>
 </struts>
